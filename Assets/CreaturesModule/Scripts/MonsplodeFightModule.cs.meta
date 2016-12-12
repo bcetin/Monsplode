@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bbc4c9ed771cdb2498563370f07e7e56
+timeCreated: 1474619055
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - CD: {fileID: 11400000, guid: 555eac9788949fe46a19d08fb4c054ce, type: 2}
+  - MD: {fileID: 11400000, guid: 8840a619773e5bf4095ae8ec69d84226, type: 2}
+  - TD: {fileID: 11400000, guid: 680a391ca9126d24582c3a92e190dbc9, type: 2}
+  - screenSR: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

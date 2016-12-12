@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8986ca30bf46e64583c193c388a9d9c, type: 3}
+  m_Name: Creatures
+  m_EditorClassIdentifier: 
+  typesData: {fileID: 11400000, guid: 680a391ca9126d24582c3a92e190dbc9, type: 2}
+  sprites:
+  - {fileID: 21300000, guid: 8a9b37053326ca9429d6136f54c4f836, type: 3}
+  - {fileID: 21300000, guid: 7c65c9bc6c387d24eb245291db822a38, type: 3}
+  - {fileID: 21300000, guid: 6496304867d67544696cd26976cb7181, type: 3}
+  - {fileID: 21300000, guid: 69339bebbf9a47646b5c0d80889662fd, type: 3}
+  - {fileID: 21300000, guid: 5ac3a9b1afe414040aca35ac3f17b7c2, type: 3}
+  - {fileID: 21300000, guid: cdcff66e83b89ba4482d23385ff5d9c0, type: 3}
+  - {fileID: 21300000, guid: 5deb605a21a649444aa85668b85768a2, type: 3}
+  - {fileID: 21300000, guid: c7ab3260ac5eb964a8335a30de290f41, type: 3}
+  - {fileID: 21300000, guid: ff3d51335e4b8fd4da3deafe5c9c04d1, type: 3}
+  - {fileID: 21300000, guid: 7485d986b7a52614c924dfc0b13c538f, type: 3}
+  - {fileID: 21300000, guid: 481a8a4a5bb7bf740a87d0a717a6ee93, type: 3}
+  - {fileID: 21300000, guid: afeb87d0e86ac314599e9ec1fbb1146e, type: 3}
+  - {fileID: 21300000, guid: 85f3aa934ab21e14f8941eebcc708966, type: 3}
+  - {fileID: 21300000, guid: 9ab419abbf2479b4aaee3f03b7a7fdb1, type: 3}
+  - {fileID: 21300000, guid: c1d5a5082a44e4445ba61b18ded69afd, type: 3}
+  - {fileID: 21300000, guid: 83efdec5b5526ae4eac09662eb264578, type: 3}
+  - {fileID: 21300000, guid: 0476e351342b38b43bff0a3d6b239898, type: 3}
+  - {fileID: 21300000, guid: a78e738def7bd65419addf30da1ad18d, type: 3}
+  - {fileID: 21300000, guid: e1cc9f4a03c634545a4eaba1b64a3a9d, type: 3}
+  - {fileID: 21300000, guid: a42c92a28a7f8a0468cc5d630587f1bf, type: 3}
+  - {fileID: 21300000, guid: 5fd21dad1d374554f949a3c842d54ec6, type: 3}
+  - {fileID: 21300000, guid: 618a4e4646419314fb974f033725c868, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  names:
+  - Caadarim
+  - Buhar
+  - Melbor
+  - Lanaluff
+  - Bob
+  - Mountoise
+  - Aluga
+  - Nibs
+  - Zapra
+  - Zenlad
+  - Vellarim
+  - Ukkens
+  - Lugirit
+  - Flaurim
+  - Myrchat
+  - Clondar
+  - Gloorim
+  - Docsplode
+  - Magmy
+  - Pouse
+  - Asteran
+  - Violan
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  type: 0000000005000000080000000000000000000000020000000000000000000000070000000600000005000000010000000300000004000000010000000700000008000000000000000400000007000000060000000600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  specials:
+  - PORTRIM
+  - NOROCK
+  - ZERO68
+  - LUFF
+  - BOB
+  - STRNORM
+  - 2F1W
+  - NOGRASS
+  - LESS3NORM
+  - ELECPLUS3
+  - PARARIM
+  - NOWATER
+  - 2W1F
+  - SERIRIM
+  - NOLITDARK
+  - WATERPLUS3
+  - DVIRIM
+  - DOC
+  - LESS3ROCK
+  - ZERO6MORE
+  - CARWATER
+  - CLRWATER
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  size: 22
