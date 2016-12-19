@@ -44,13 +44,18 @@ public class MonsplodeFightModule : MonoBehaviour {
 	void PickCreature()
 	{
 		crID=Random.Range(0,CD.size);
+		/*#if UNITY_EDITOR
+		crID = 17;
+		#endif*/
+
 		screenSR.sprite = CD.sprites [crID];
 	}
 
 	void PickMoves()
 	{
 		moveIDs = new int[4];
-		List<int> movePool= new List<int>();
+	
+		 List<int> movePool= new List<int>();
 		for (int i = 0; i < MD.size; i++)
 			movePool.Add (i);
 		for (int i = 0; i < 4; i++)
@@ -58,14 +63,15 @@ public class MonsplodeFightModule : MonoBehaviour {
 			int tem = Random.Range (0, movePool.Count);
 
 			int pickedMove=movePool[tem];
-			/*
-			if (i == 3)
-				pickedMove = 37;
-				*/
+			/*#if UNITY_EDITOR
+			pickedMove=23;
+			#endif*/
 			buttons [i].GetComponentInChildren<TextMesh> ().text = MD.names [pickedMove];
 			moveIDs [i] = pickedMove;
 			movePool.Remove(pickedMove);
 		}
+
+
 	}
 	void PlaceAttackMulMatrix()
 	{
@@ -156,12 +162,12 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 		if (MD.specials [move] == "GORD")
 		{
-			if(CD.type[crea]==3 && CD.type[crea]==8)
+			if(CD.type[crea]==8)
 				DAMAGE=10;
 		}
 		if (MD.specials [move] == "RORG")
 		{
-			if(CD.type[crea]==2 && CD.type[crea]==6)
+			if(CD.type[crea]==2 || CD.type[crea]==6)
 				DAMAGE=10;
 		}
 		if (MD.specials [move] == "FREAK")
@@ -349,7 +355,6 @@ public class MonsplodeFightModule : MonoBehaviour {
 
 	void Correct()
 	{
-		//GrayLEDS [correctCount].SetActive (false); OLD 3 STAGE TIMES
 		GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime,transform);
 		correctCount++;
 		if (correctCount == 1)

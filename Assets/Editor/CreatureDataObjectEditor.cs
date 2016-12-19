@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System;
 
 [CustomEditor(typeof(CreatureDataObject))]
 public class CreatureDataObjectEditor : Editor
@@ -11,14 +12,12 @@ public class CreatureDataObjectEditor : Editor
 		base.OnInspectorGUI ();
 		CreatureDataObject myTarget= (CreatureDataObject)target;
 		EditorGUI.BeginChangeCheck ();
-		//if (myTarget.names==null) IF YOU PASS 50 ITEMS CMERE AND FIX!!!!!!!!!!!
-		//	myTarget.names = new string[100];
-		//if (myTarget.sprites == null)
-		//	myTarget.sprites = new Sprite[100];
-		//	myTarget.isMaterial = new bool[100];
-			//myTarget.dangerLvl = new int[100];
-		//Debug.Log (myTarget.sprites.Length);
+	
 		myTarget.size = EditorGUILayout.IntField ("Creature Count:",myTarget.size);
+		Array.Resize(ref myTarget.names, myTarget.size);
+		Array.Resize(ref myTarget.sprites, myTarget.size);
+		Array.Resize(ref myTarget.type, myTarget.size);
+		Array.Resize(ref myTarget.specials, myTarget.size);
 		EditorGUILayout.LabelField ("ID Name Sprite Type Special");
 		for (int i = 0; i < myTarget.size; i++)
 		{
