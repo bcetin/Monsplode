@@ -106,8 +106,22 @@ public class MonsplodeFightModule : MonoBehaviour {
 		float DAMAGE=MD.damage[move];
 		int TYPE = CD.type [crea];
 
-		// MOVE SPECIALS
-		if (MD.specials [move] == "BOO")
+        //TYPE OVERRIDES
+        if (CD.specials[crea] == "STRNORM" && GetComponent<KMBombInfo>().GetStrikes() > 0)
+            TYPE = 0; //OVERRIDE TYPE TO NORMAL MOUNTO
+        if (CD.specials[crea] == "LESS3NORM" && batteryCount < 3)
+            TYPE = 0; //OVERRIDE TYPE TO NORMAL ZAPRA
+        if (CD.specials[crea] == "LESS3ROCK" && batteryCount < 3)
+            TYPE = 2; //OVERRIDE TYPE TO ROCK MAGMY
+        if (CD.specials[crea] == "CARWATER" && hasCAR)
+            TYPE = 5; //OVERRIDE TYPE TO ROCK MAGMY
+        if (CD.specials[crea] == "CLRWATER" && hasCLR)
+            TYPE = 5; //OVERRIDE TYPE TO ROCK MAGMY
+        if (CD.specials[crea] == "NOLITDARK" && !hasAnyLit)
+            TYPE = 8; //OVERRIDE TYPE TO DARK CAT
+
+        // MOVE SPECIALS
+        if (MD.specials [move] == "BOO")
 		{
 			foreach (char c in serialNumber)
 				if (c == 'O' || c == '0')
@@ -162,12 +176,12 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 		if (MD.specials [move] == "GORD")
 		{
-			if(CD.type[crea]==8)
+			if(TYPE==8)
 				DAMAGE=10;
 		}
 		if (MD.specials [move] == "RORG")
 		{
-			if(CD.type[crea]==2 || CD.type[crea]==6)
+			if(TYPE==2 || TYPE==6)
 				DAMAGE=10;
 		}
 		if (MD.specials [move] == "FREAK")
@@ -244,19 +258,6 @@ public class MonsplodeFightModule : MonoBehaviour {
 		// BOB
 		if (CD.specials [crea] == "BOB" && hasLitBOB && MD.type[move]!=0)
 			return 0; // NON NORMALS CANT HIT
-		//TYPE OVERRIDES
-		if (CD.specials [crea] == "STRNORM" && GetComponent<KMBombInfo> ().GetStrikes()>0)
-			TYPE=0; //OVERRIDE TYPE TO NORMAL MOUNTO
-		if (CD.specials [crea] == "LESS3NORM" && batteryCount<3)
-			TYPE=0; //OVERRIDE TYPE TO NORMAL ZAPRA
-		if (CD.specials [crea] == "LESS3ROCK" && batteryCount<3)
-			TYPE=2; //OVERRIDE TYPE TO ROCK MAGMY
-		if (CD.specials [crea] == "CARWATER" && hasCAR)
-			TYPE=5; //OVERRIDE TYPE TO ROCK MAGMY
-		if (CD.specials [crea] == "CLRWATER" && hasCLR)
-			TYPE=5; //OVERRIDE TYPE TO ROCK MAGMY
-		if (CD.specials [crea] == "NOLITDARK" && !hasAnyLit)
-			TYPE=8; //OVERRIDE TYPE TO DARK CAT
 
 		//CALCULATION LINE (FINALLY!)
 
