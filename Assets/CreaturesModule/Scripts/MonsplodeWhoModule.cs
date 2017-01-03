@@ -27,6 +27,8 @@ public class MonsplodeWhoModule : MonoBehaviour
         GetComponent<KMNeedyModule>().OnTimerExpired += OnTimerExpired;
     }
 
+
+
     protected bool Solve()
     {
         GetComponent<KMNeedyModule>().OnPass();
