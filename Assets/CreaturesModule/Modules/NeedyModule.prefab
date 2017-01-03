@@ -571,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 156784}
   m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.000000115202305}
   m_LocalPosition: {x: -0, y: 0.0046, z: 0}
-  m_LocalScale: {x: 0.002241521, y: 0.0048352513, z: 0.0045478353}
+  m_LocalScale: {x: 0.002800348, y: 0.005204245, z: 0.0045478353}
   m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 413438}
@@ -722,7 +722,7 @@ Transform:
   m_GameObject: {fileID: 168918}
   m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.000000115202305}
   m_LocalPosition: {x: -0, y: 0.0046, z: 0}
-  m_LocalScale: {x: 0.002241521, y: 0.0048352513, z: 0.0045478353}
+  m_LocalScale: {x: 0.002800348, y: 0.005204245, z: 0.0045478353}
   m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 458298}
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 1718998123, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountdownTime: 20
+  CountdownTime: 25
   ModuleType: monsplodeWho
   ModuleDisplayName: Who's That Monsplode?
   RequiresTimerVisibility: 0

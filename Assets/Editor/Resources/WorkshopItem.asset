@@ -19,18 +19,18 @@ MonoBehaviour:
     Monsplode?\" you have to find the name of a Monsplode by looking at it's shadow.\r\n\r\nManuals
     are included in the mod files but you can download from Timwi's site as well.
     Search for Monsplode. http://ktane.timwi.de/\r\nI owe a huge thanks to him for
-    the manual by the way.\r\n\r\nYou know a game with similar creatures and mechanics?
-    You played it?\r\nThat's great! You will get a headstart!\r\n\r\nCopyright claims?
-    I have no idea what you are talking about pal.\r\n\r\n( Jokes aside, I totally
-    respect Nintendo, don't sue me or anything guys B) )\r\n\r\n-- [b]Latest Changes[/b]
-    --\r\n\r\n- 8 New Monsplodes.\r\n- Fight module is now 1 stage, instead of 3.\r\n\r\n[h1]
-    Vote on the stage count of \"Monsplode, Fight!\" [/h1]\r\n\r\nModule types are
-    \"[b]monsplodeFight[/b]\" and \"[b]monsplodeWho[/b]\", I am pretty ok if you want
-    to use them on your mod/mission pack.\r\n\r\n[h1] Want your Monsplode in the game?
-    [/h1]\r\n\r\nAfter we hit 200 subscribers mark, one or two of our great subscribers(at
-    random) will have their creatures drawn and put in the mod on upcoming updates.
-    We have 22 Monsplodes now. I want to make it 24 at most to keep the complexity
-    on a sane level. (And the manual length.)"
+    the manual by the way.\r I also want to thank KTANE Discord Community for finding
+    bugs and helping me out with fixes.\n\r\nYou know a game with similar creatures
+    and mechanics? You played it?\r\nThat's great! You will get a headstart!\r\n\r\nCopyright
+    claims? I have no idea what you are talking about pal.\r\n\r\n( Jokes aside, I
+    totally respect Nintendo, don't sue me or anything guys B) )\r\n\r\n-- [b]Latest
+    Changes[/b] --\r\n\r\n- 8 New Monsplodes.\r\n- Fight module is now 1 stage, instead
+    of 3.\r\n\r\nModule types are \"[b]monsplodeFight[/b]\" and \"[b]monsplodeWho[/b]\",
+    I am pretty ok if you want to use them on your mod/mission pack.\r\n\r\n[h1] Want
+    your Monsplode in the game? [/h1]\r\n\r\nAfter we hit 200 subscribers mark, one
+    or two of our great subscribers(at random) will have their creatures drawn and
+    put in the mod on upcoming updates. We have 22 Monsplodes now. I want to make
+    it 24 at most to keep the complexity on a sane level. (And the manual length.)"
   PreviewImage: {fileID: 2800000, guid: 9832dd9294c5c75428e9cdc476b9f061, type: 3}
   Tags:
   - Regular Module
