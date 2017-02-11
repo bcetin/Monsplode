@@ -125,46 +125,46 @@ public class MonsplodeFightModule : MonoBehaviour {
 			foreach (char c in serialNumber)
 				if (c == 'O' || c == '0')
 					DAMAGE += 3;
-			Debug.Log ("Boo O/0 count: " + DAMAGE/3);
+			Debug.Log ("[MonsplodeFight] Boo O/0 count: " + DAMAGE/3);
 		}
 		if (MD.specials [move] == "BPOWER")
 		{
 			DAMAGE += batteryCount*2;
-			Debug.Log ("BPower Battery Count: " + DAMAGE/2);
+			Debug.Log ("[MonsplodeFight] BPower Battery Count: " + DAMAGE/2);
 		}
 		if (MD.specials [move] == "SHOCKPORT")
 		{
 			if (hasRJ45)
 			{
-				Debug.Log ("Shock Has RJ45 Bonus!");
+				Debug.Log ("[MonsplodeFight] Shock Has RJ45 Bonus!");
 				DAMAGE = 8;
 			}
 		}
 		if (MD.specials [move] == "DARKPORT")
 		{
 			DAMAGE = portcount;
-			Debug.Log ("DPortal Port Count: " + portcount);
+			Debug.Log ("[MonsplodeFight] DPortal Port Count: " + portcount);
 		}
 		if (MD.specials [move] == "LASTDIGIT")
 		{
 			if ('0' <=  serialNumber[5] &&  serialNumber[5] <= '9')
 				DAMAGE = serialNumber[5]-'0'; // Probably not needed but I don't want to risk deleting this.
 			else DAMAGE=0;
-			Debug.Log ("LWord Last Digit: " + DAMAGE);
+			Debug.Log ("[MonsplodeFight] LWord Last Digit: " + DAMAGE);
 		}
 		if (MD.specials [move] == "NOSOLVED")
 		{
 			if (GetComponent<KMBombInfo> ().GetSolvedModuleNames ().Count == 0)
 			{
 				DAMAGE = 10;
-				Debug.Log ("Void has 10 damage bonus!");
+				Debug.Log ("[MonsplodeFight] Void has 10 damage bonus!");
 			}
 		}
 
 		if (MD.specials [move] == "FIERYMUL")
 		{
 			DAMAGE = batteryCount*batteryHolderCount; // IS IT CORRECT?
-			Debug.Log ("FSoul Batteries: " + batteryCount + " Holders:" + batteryHolderCount);
+			Debug.Log ("[MonsplodeFight] FSoul Batteries: " + batteryCount + " Holders:" + batteryHolderCount);
 		}
 		if (MD.specials [move] == "BIGDIG")
 		{
@@ -174,7 +174,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 					if (mx < c - '0')
 						mx = c - '0';
 			DAMAGE = mx;
-			Debug.Log ("Stretch Highest Digit: " + DAMAGE);
+			Debug.Log ("[MonsplodeFight] Stretch Highest Digit: " + DAMAGE);
 		}
 		if (MD.specials [move] == "SMOLDIG")
 		{
@@ -184,13 +184,13 @@ public class MonsplodeFightModule : MonoBehaviour {
 					if (mn > c - '0')
 						mn = c - '0';
 			DAMAGE = mn;
-			Debug.Log ("Shrink Smallest Digit: " + DAMAGE);
+			Debug.Log ("[MonsplodeFight] Shrink Smallest Digit: " + DAMAGE);
 		}
 		if (MD.specials [move] == "GORD")
 		{
             if(TYPE==8)
             {
-                Debug.Log("Appearify has 10 damage bonus!");
+				Debug.Log("[MonsplodeFight] Appearify has 10 damage bonus!");
                 DAMAGE=10;
             }
 		}
@@ -198,7 +198,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 		{
             if(TYPE==2 || TYPE==6)
             {
-				Debug.Log ("Sendify has 10 damage bonus!");
+				Debug.Log ("[MonsplodeFight] Sendify has 10 damage bonus!");
 				DAMAGE=10;
 			}
 		}
@@ -207,24 +207,24 @@ public class MonsplodeFightModule : MonoBehaviour {
 			if (freakON)
 			{
 				DAMAGE = 10;
-				Debug.Log ("Freak Out has 10 damage bonus!");
+				Debug.Log ("[MonsplodeFight] Freak Out has 10 damage bonus!");
 			}
 			else if (freak)
 			{
-				Debug.Log ("Freak Out has 5 damage bonus!");
+				Debug.Log ("[MonsplodeFight] Freak Out has 5 damage bonus!");
 				DAMAGE = 5;
 			}
 		}
 		if (MD.specials [move] == "LENGTH")
 		{
 			DAMAGE = CD.names[crea].Length;
-			Debug.Log ("Opponents Name Length: " + CD.names[crea].Length);
+			Debug.Log ("[MonsplodeFight] Opponents Name Length: " + CD.names[crea].Length);
 		}
 		if (MD.specials [move] == "BUGSPRAY")
 		{
 			if (CD.names [crea] == "Melbor" || CD.names [crea] == "Zenlad")
 			{
-				Debug.Log ("Bug Spray has 10 damage bonus!");
+				Debug.Log ("[MonsplodeFight] Bug Spray has 10 damage bonus!");
 				DAMAGE = 10;
 			}
 			// ADD BUGS TO HERE
@@ -232,13 +232,13 @@ public class MonsplodeFightModule : MonoBehaviour {
 		if (MD.specials [move] == "MODCNT")
 		{
 			DAMAGE = moduleCount;
-			Debug.Log ("Bedrock Module Count: " + moduleCount);
+			Debug.Log ("[MonsplodeFight] Bedrock Module Count: " + moduleCount);
 			// ADD BUGS TO HERE
 		}
 		if (MD.specials [move] == "TIMELEFT")
 		{
 			DAMAGE = Mathf.FloorToInt(GetComponent<KMBombInfo> ().GetTime()/60f);
-			Debug.Log ("Countdown Remaining Minutes: " + DAMAGE);
+			Debug.Log ("[MonsplodeFight] Countdown Remaining Minutes: " + DAMAGE);
 		}
 
 		// CREATURE SPECIALS
@@ -339,10 +339,10 @@ public class MonsplodeFightModule : MonoBehaviour {
 	{
 		if (!isActivated)
 		{
-			Debug.Log("Pressed button before module has been activated!");
+			Debug.Log("[MonsplodeFight] Pressed button before module has been activated!");
 			return;
 		}
-		Debug.Log("Opponent: " + CD.names[crID] + "\nUsing Move("+buttonID+"): "+ MD.names [moveIDs [buttonID]].Replace('\n',' '));
+		Debug.Log("[MonsplodeFight] Opponent: " + CD.names[crID] + "\nUsing Move("+buttonID+"): "+ MD.names [moveIDs [buttonID]].Replace('\n',' '));
 //		
 		if (MD.specials [moveIDs [buttonID]] == "BOOM" && CD.specials[crID]!="DOC")
 		{
@@ -352,7 +352,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 			GetComponent<KMBombModule>().HandleStrike();
 			GetComponent<KMBombModule>().HandleStrike();
 			//BOOM!
-			Debug.Log("Pressed BOOM!");
+			Debug.Log("[MonsplodeFight] Pressed BOOM!");
 		}
 //		BOOM?
 //
@@ -371,7 +371,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 			}
 			else if (dmg == mxdmg)
 				winners.Add (i);
-			Debug.Log ("Move Name("+i+"): " + MD.names[moveIDs[i]].Replace('\n',' ') + "\nCalculated Damage: "+dmg);
+			Debug.Log ("[MonsplodeFight] Move Name("+i+"): " + MD.names[moveIDs[i]].Replace('\n',' ') + "\nCalculated Damage: "+dmg);
 		}
 
 		if ( winners.Contains (buttonID))
