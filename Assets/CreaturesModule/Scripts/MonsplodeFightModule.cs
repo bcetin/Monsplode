@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Linq;
 
 public class MonsplodeFightModule : MonoBehaviour {
 
@@ -107,17 +108,35 @@ public class MonsplodeFightModule : MonoBehaviour {
 
         //TYPE OVERRIDES
         if (CD.specials[crea] == "STRNORM" && GetComponent<KMBombInfo>().GetStrikes() > 0)
+		{
+			Debug.Log ("[MonsplodeFight] Mountoise is NORMAL type instead.");
             TYPE = 0; //OVERRIDE TYPE TO NORMAL MOUNTO
+		}
         if (CD.specials[crea] == "LESS3NORM" && batteryCount < 3)
+		{
+			Debug.Log ("[MonsplodeFight] Zapra is NORMAL type instead.");
             TYPE = 0; //OVERRIDE TYPE TO NORMAL ZAPRA
+		}
         if (CD.specials[crea] == "LESS3ROCK" && batteryCount < 3)
+		{
+			Debug.Log ("[MonsplodeFight] Magmy is ROCK type instead.");
             TYPE = 2; //OVERRIDE TYPE TO ROCK MAGMY
+		}
         if (CD.specials[crea] == "CARWATER" && hasCAR)
-            TYPE = 5; //OVERRIDE TYPE TO ROCK MAGMY
+		{
+			Debug.Log ("[MonsplodeFight] Asteran is WATER type instead.");
+            TYPE = 5; 
+		}
         if (CD.specials[crea] == "CLRWATER" && hasCLR)
-            TYPE = 5; //OVERRIDE TYPE TO ROCK MAGMY
+		{
+			Debug.Log ("[MonsplodeFight] Violan is WATER type instead.");
+            TYPE = 5;
+		}
         if (CD.specials[crea] == "NOLITDARK" && !hasAnyLit)
+		{
+			Debug.Log ("[MonsplodeFight] Myrchat is DARK type instead.");
             TYPE = 8; //OVERRIDE TYPE TO DARK CAT
+		}
 
         // MOVE SPECIALS
         if (MD.specials [move] == "BOO")
@@ -217,8 +236,8 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 		if (MD.specials [move] == "LENGTH")
 		{
-			DAMAGE = CD.names[crea].Length;
-			Debug.Log ("[MonsplodeFight] Opponents Name Length: " + CD.names[crea].Length);
+			DAMAGE = CD.names[crea].Count(char.IsLetter);
+			Debug.Log ("[MonsplodeFight] Opponents Name Length: " + DAMAGE);
 		}
 		if (MD.specials [move] == "BUGSPRAY")
 		{
@@ -246,65 +265,110 @@ public class MonsplodeFightModule : MonoBehaviour {
 		if (CD.specials [crea] == "PORTRIM")
 		{
 			if (portcount > 0 && MD.type [move] == 0)
+			{
+				Debug.Log ("[MonsplodeFight] Caadarim takes no damage from NORMAL type.");
 				return 0;
+			}
 		}
 
 		if (CD.specials [crea] == "PARARIM")
 		{
 			if (hasParallel && MD.type [move] == 0)
+			{
+				Debug.Log ("[MonsplodeFight] Vellarim takes no damage from NORMAL type.");
 				return 0;
+			}
 		}
 
 		if (CD.specials [crea] == "SERIRIM")
 		{
 			if (hasSerial && MD.type [move] == 0)
+			{
+				Debug.Log ("[MonsplodeFight] Flaurim takes no damage from NORMAL type.");
 				return 0;
+			}
 		}
 
 		if (CD.specials [crea] == "DVIRIM")
 		{
 			if (hasDVI && MD.type [move] == 0)
+			{
+				Debug.Log ("[MonsplodeFight] Gloorim takes no damage from NORMAL type.");
 				return 0;
+			}
 		}
 		// NO TEAM
 		if (CD.specials [crea] == "NOROCK")
 		{
 			if (MD.type [move] == 2)
+			{
+				Debug.Log ("[MonsplodeFight] Buhar takes no damage from ROCK type.");
 				return 0;
+			}
 		}
 		if (CD.specials [crea] == "NOGRASS")
 		{
 			if (MD.type [move] == 6)
+			{
+				Debug.Log ("[MonsplodeFight] Nibs takes no damage from GRASS type.");
 				return 0;
+			}
 		}
 		if (CD.specials [crea] == "NOWATER")
 		{
 			if (MD.type [move] == 5)
+			{
+				Debug.Log ("[MonsplodeFight] Ukkens takes no damage from WATER type.");
 				return 0;
+			}
 		}
 		// DOC
 		if (CD.specials [crea] == "DOC" && MD.specials [move] == "BOOM")
+		{
+			Debug.Log ("[MonsplodeFight] BOOM must be used against Docsplode.");
 			return 1000; // INFINITY ENOUGH?
+		}
 		// BOB
 		if (CD.specials [crea] == "BOB" && hasLitBOB && MD.type[move]!=0)
+		{
+			Debug.Log ("[MonsplodeFight] Bob takes no damage from non-NORMAL type.");
 			return 0; // NON NORMALS CANT HIT
+		}
 
 		//CALCULATION LINE (FINALLY!)
 
 		float NETDAMAGE=DAMAGE*mulLookup[MD.type[move]][TYPE];
-
+		Debug.Log ("[MonsplodeFight] Base Damage = " + DAMAGE + " Type Multipler: " + mulLookup[MD.type[move]][TYPE] + "\n Net Damage: " + NETDAMAGE);
 		//MELBOR
 		if (CD.specials [crea] == "ZERO68")
-			if ((int)NETDAMAGE == 6 || (int)NETDAMAGE == 8) return 0;
+		{
+			if ((int)NETDAMAGE == 6 || (int)NETDAMAGE == 8)
+			{
+				Debug.Log ("[MonsplodeFight] Melbor takes 0 damage.");
+				return 0;
+			}
+		}
 		//POUSE
 		if (CD.specials [crea] == "ZERO6MORE")
-			if ((int)NETDAMAGE >= 6) return 0;
+		{
+			if ((int)NETDAMAGE >= 6)
+			{
+				Debug.Log ("[MonsplodeFight] Pouse takes 0 damage.");
+				return 0;
+			}
+		}
 		//ZENLAD
 		if (CD.specials [crea] == "ELECPLUS3" && MD.type [move] == 7)
+		{
+			Debug.Log ("[MonsplodeFight] Zenlad takes extra 3 net damage from ELECTR.");
 			return NETDAMAGE + 3;
+		}
 		//CLONDAR
 		if (CD.specials [crea] == "WATERPLUS3" && MD.type [move] == 5)
+		{
+			Debug.Log ("[MonsplodeFight] Clondar takes extra 3 net damage from WATER.");
 			return NETDAMAGE + 3;
+		}
 		
 		//LANALUFF
 		if (CD.specials [crea] == "LUFF" && MD.type [move] == 1 && HasSameChar (CD.names [crea].ToUpper(), serialNumber))
