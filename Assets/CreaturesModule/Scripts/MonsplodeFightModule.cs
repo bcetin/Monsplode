@@ -26,11 +26,10 @@ public class MonsplodeFightModule : MonoBehaviour {
 	public float moveDelta;
 	bool revive=false;
 	int[] moveIDs;
-	//
+
 
 	void Start()
 	{
-		//fukenTypeData = TD.mulLookup; WORKAROUDN!!!!
 		Init();
 		GetComponent<KMBombModule>().OnActivate += ActivateModule;
 	}
@@ -45,7 +44,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 	{
 		crID=Random.Range(0,CD.size);
 		/*#if UNITY_EDITOR
-		crID = 17;
+		crID = 22;
 		#endif*/
 
 		screenSR.sprite = CD.sprites [crID];
@@ -85,7 +84,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 		foreach (Vector3 vec in AttackMul)
 			mulLookup [(int)vec.x] [(int)vec.y] = vec.z;
 	}
-	void Init() // ITS  CHANGING WITH TIME!
+	void Init() // IT`S  CHANGING WITH TIME!
 	{
 		//Pick DATA
 		PlaceAttackMulMatrix();
@@ -322,6 +321,12 @@ public class MonsplodeFightModule : MonoBehaviour {
 				return 0;
 			}
 		}
+		//PERCY
+		if (CD.specials [crea] == "SPLASH" && MD.specials [move] == "SPLASH")
+		{
+			Debug.Log ("[MonsplodeFight] SPLASH must be used against Percy.");
+			return 1000;
+		}
 		// DOC
 		if (CD.specials [crea] == "DOC" && MD.specials [move] == "BOOM")
 		{
@@ -338,13 +343,13 @@ public class MonsplodeFightModule : MonoBehaviour {
 		//CALCULATION LINE (FINALLY!)
 
 		float NETDAMAGE=DAMAGE*mulLookup[MD.type[move]][TYPE];
-		Debug.Log ("[MonsplodeFight] Base Damage = " + DAMAGE + " Type Multipler: " + mulLookup[MD.type[move]][TYPE] + "\n Net Damage: " + NETDAMAGE);
+		Debug.Log ("[MonsplodeFight] Base Damage: " + DAMAGE + " | Type Multipler: " + mulLookup[MD.type[move]][TYPE] + " | Net Damage: " + NETDAMAGE);
 		//MELBOR
 		if (CD.specials [crea] == "ZERO68")
 		{
 			if ((int)NETDAMAGE == 6 || (int)NETDAMAGE == 8)
 			{
-				Debug.Log ("[MonsplodeFight] Melbor takes 0 damage.");
+				Debug.Log ("[MonsplodeFight] Melbor takes 0 damage instead.");
 				return 0;
 			}
 		}
@@ -353,7 +358,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 		{
 			if ((int)NETDAMAGE >= 6)
 			{
-				Debug.Log ("[MonsplodeFight] Pouse takes 0 damage.");
+				Debug.Log ("[MonsplodeFight] Pouse takes 0 damage instead.");
 				return 0;
 			}
 		}
@@ -371,22 +376,37 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 		
 		//LANALUFF
-		if (CD.specials [crea] == "LUFF" && MD.type [move] == 1 && HasSameChar (CD.names [crea].ToUpper(), serialNumber))
+		if (CD.specials [crea] == "LUFF" && MD.type [move] == 1 && HasSameChar (CD.names [crea].ToUpper (), serialNumber))
+		{
+			Debug.Log ("[MonsplodeFight] Lanaluff has a common letter with serial. Extra 3 net damage.");
 			return NETDAMAGE + 3;
+		}
 		//PILLOWS
 		if (CD.specials [crea] == "2F1W")
 		{
 			if (MD.type [move] == 4)
+			{
+				Debug.Log ("[MonsplodeFight] Aluga takes extra 2 net damage from FIRE.");
 				return NETDAMAGE + 2;
+			}
 			if (MD.type [move] == 5)
+			{
+				Debug.Log ("[MonsplodeFight] Aluga takes 1 less net damage from WATER.");
 				return NETDAMAGE - 1;
+			}
 		}
 		if (CD.specials [crea] == "2W1F")
 		{
 			if (MD.type [move] == 5)
+			{
+				Debug.Log ("[MonsplodeFight] Lugirit takes extra 2 net damage from WATER.");
 				return NETDAMAGE + 2;
+			}
 			if (MD.type [move] == 4)
+			{
+				Debug.Log ("[MonsplodeFight] Lugirit takes 1 less net damage from FIRE.");
 				return NETDAMAGE - 1;
+			}
 		}
 		return NETDAMAGE;
 	}
@@ -418,8 +438,6 @@ public class MonsplodeFightModule : MonoBehaviour {
 			//BOOM!
 			Debug.Log("[MonsplodeFight] Pressed BOOM!");
 		}
-//		BOOM?
-//
 
 		float mxdmg=0;
 		List<int> winners= new List<int>();
@@ -427,6 +445,11 @@ public class MonsplodeFightModule : MonoBehaviour {
 		{
 			buttons [i].GetComponentInChildren<TextMesh>().text=MD.names[moveIDs[i]];
 			float dmg = CalcDmg (moveIDs[i],crID);
+			if (CD.specials [crID] == "LOWEST")
+			{
+				Debug.Log("[MonsplodeFight] Negate the calculated number for Cutie Pie calculation.");
+				dmg = -dmg;
+			}
 			if (dmg > mxdmg)
 			{
 				mxdmg=dmg;
@@ -514,7 +537,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 	void InitBombData()
 	{
 		// STUFFF
-		foreach (string query in new List<string> { KMBombInfo.QUERYKEY_GET_BATTERIES, KMBombInfo.QUERYKEY_GET_INDICATOR, KMBombInfo.QUERYKEY_GET_PORTS, KMBombInfo.QUERYKEY_GET_SERIAL_NUMBER, "example"})
+		/*foreach (string query in new List<string> { KMBombInfo.QUERYKEY_GET_BATTERIES, KMBombInfo.QUERYKEY_GET_INDICATOR, KMBombInfo.QUERYKEY_GET_PORTS, KMBombInfo.QUERYKEY_GET_SERIAL_NUMBER, "example"})
 		{
 			List<string> queryResponse = GetComponent<KMBombInfo>().QueryWidgets(query, null);
 
@@ -522,7 +545,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 			{
 				Debug.Log(queryResponse[0]);
 			}
-		}
+		}*/
 		// STUFFF
 		//BATTERIES
 
