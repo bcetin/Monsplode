@@ -81,8 +81,8 @@ MonoBehaviour:
 
     Fang'
   - Countdown
-  - 
-  - 
+  - Dislocate
+  - Sidestep
   - 
   - 
   - 
@@ -134,6 +134,8 @@ MonoBehaviour:
   - NONE
   - NONE
   - TIMELEFT
+  - LOC
+  - SIDE
   - 
   - 
   - 
@@ -144,6 +146,4 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  - 
-  size: 38
+  size: 40

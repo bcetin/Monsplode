@@ -63,7 +63,8 @@ public class MonsplodeFightModule : MonoBehaviour {
 
 			int pickedMove=movePool[tem];
 			/*#if UNITY_EDITOR
-			pickedMove=23;
+				if(i==3)
+				pickedMove=38;
 			#endif*/
 			buttons [i].GetComponentInChildren<TextMesh> ().text = MD.names [pickedMove];
 			moveIDs [i] = pickedMove;
@@ -99,7 +100,7 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 	}
 	// Update is called once per frame
-	float CalcDmg(int move,int crea)
+	float CalcDmg(int move,int crea,int buttonLocation)
 	{
 		//DAMAGE CHANGING MOVES
 		float DAMAGE=MD.damage[move];
@@ -138,6 +139,20 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 
         // MOVE SPECIALS
+		if (MD.specials [move] == "LOC")
+		{
+			int[] DMG = {5,3,2,8};
+
+			DAMAGE = DMG[buttonLocation];
+			Debug.Log ("[MonsplodeFight] Dislocate base damage is " + DAMAGE + ", according to button location.");
+		}
+		if (MD.specials [move] == "SIDE")
+		{
+			int[] lookUp = {1,0,3,2};
+
+			DAMAGE = MD.names[moveIDs[lookUp[buttonLocation]]].Count(char.IsLetter);
+			Debug.Log ("[MonsplodeFight] Sidestep base damage is " + DAMAGE + ", according to neighbor moves' letter count. (" + MD.names[moveIDs[lookUp[buttonLocation]]].Replace('\n',' ') + ")");
+		}
         if (MD.specials [move] == "BOO")
 		{
 			foreach (char c in serialNumber)
@@ -439,12 +454,12 @@ public class MonsplodeFightModule : MonoBehaviour {
 			Debug.Log("[MonsplodeFight] Pressed BOOM!");
 		}
 
-		float mxdmg=0;
+		float mxdmg=-100;
 		List<int> winners= new List<int>();
 		for(int i = 0; i < 4; i++)
 		{
-			buttons [i].GetComponentInChildren<TextMesh>().text=MD.names[moveIDs[i]];
-			float dmg = CalcDmg (moveIDs[i],crID);
+			//buttons [i].GetComponentInChildren<TextMesh>().text=MD.names[moveIDs[i]];
+			float dmg = CalcDmg (moveIDs[i],crID,i);
 			if (CD.specials [crID] == "LOWEST")
 			{
 				Debug.Log("[MonsplodeFight] Negate the calculated number for Cutie Pie calculation.");
