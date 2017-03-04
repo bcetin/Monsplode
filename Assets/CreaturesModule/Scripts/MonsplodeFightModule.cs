@@ -139,12 +139,20 @@ public class MonsplodeFightModule : MonoBehaviour {
 		}
 
         // MOVE SPECIALS
-		if (MD.specials [move] == "LOC")
+		/*if (MD.specials [move] == "LOC") DISLOCATE IS CANCELLED
 		{
 			int[] DMG = {5,3,2,8};
 
 			DAMAGE = DMG[buttonLocation];
 			Debug.Log ("[MonsplodeFight] Dislocate base damage is " + DAMAGE + ", according to button location.");
+		}*/
+		if (MD.specials [move] == "FINALE")
+		{
+			if (GetComponent<KMBombInfo> ().GetSolvedModuleNames ().Count == GetComponent<KMBombInfo> ().GetSolvableModuleNames().Count-1)
+			{
+				DAMAGE = 10;
+				Debug.Log ("[MonsplodeFight] Finale has 10 damage bonus!");
+			}
 		}
 		if (MD.specials [move] == "SIDE")
 		{
