@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkshopPublishedFileID: 777164508
   Title: Monsplode Modules
-  Description: "[h1]Now you have a chance to get your Monsplode into the mod! Details
-    below! [/h1]\r\n\r\n[h1] Monsplode Modules! [/h1]\r\n\r\nThis mod includes a regular
-    module with a needy sister module.\r\nOn \"Monsplode, Fight!\" you have to deal
-    the highest possible damage to your opponent.\r\nOn \"Who's that Monsplode?\"
-    you have to find the name of a Monsplode by looking at it's shadow.\r\n\r\nManuals
-    are included in the mod files but you can download from Timwi's site as well.
-    Search for Monsplode. http://ktane.timwi.de/\r\nI owe a huge thanks to him for
-    the manual by the way.\r\nI also want to thank KTANE Discord Community for finding
-    bugs and helping me out with fixes.\r\n\r\nYou know a game with similar creatures
-    and mechanics? You played it?\r\nThat's great! You will get a headstart!\r\n\r\nCopyright
-    claims? I have no idea what you are talking about pal.\r\n\r\n( Jokes aside, I
-    totally respect Nintendo, don't sue me or anything guys B) )\r\n\r\nModule types
-    are \"[b]monsplodeFight[/b]\" and \"[b]monsplodeWho[/b]\", I am pretty ok if you
-    want to use them on your mod/mission pack.\r\n\r\nWe have 22 Monsplodes now. I
-    want to make it 24 at most to keep the complexity on a sane level. (And the manual
-    length.)\nWe have contacted with the contest/raffle winners. New Monsplodes will
-    be here as soon as the designs are ready."
+  Description: "[h1] Monsplode Modules! [/h1]\r\n\r\nThis mod includes a regular module
+    with a needy sister module.\r\nOn \"Monsplode, Fight!\" you have to deal the highest
+    possible damage to your opponent.\r\nOn \"Who's that Monsplode?\" you have to
+    find the name of a Monsplode by looking at it's shadow.\r\n\r\nManuals are included
+    in the mod files but you can download from Timwi's site as well. Search for Monsplode.
+    http://ktane.timwi.de/ I owe a huge thanks to him for the manual by the way.\r\n\r\nWelcome
+    to v3.00. We have 24 Monsplodes now! And 40 moves.\r\n\r\nWe had a raffe/contest
+    where 2 people got chosen randomly to design a new monsplode for the modules.\r\nThey
+    are in the modules now. Say hi to [url=https://github.com/mantlair/Monsplode/blob/master/Assets/CreaturesModule/Sprites/Percy.png]
+    Percy\t[/url] (Submitted by CaitSith2) and [url=https://github.com/mantlair/Monsplode/blob/master/Assets/CreaturesModule/Sprites/Cutie_Pie.png]
+    Cutie Pie [/url] (Submitted by Timwi)!\r\n\r\n\r\nI also want to thank KTANE Discord
+    Community for finding bugs and helping me out with fixes.\r\n\r\nYou know a game
+    with similar creatures and mechanics? You played it?\r\nThat's great! You will
+    get a headstart!\r\n\r\nCopyright claims? I have no idea what you are talking
+    about pal.\r\n\r\n( Jokes aside, I totally respect Nintendo, don't sue me or anything
+    guys B) )\r\n\r\nModule types are \"[b]monsplodeFight[/b]\" and \"[b]monsplodeWho[/b]\",
+    I am pretty ok if you want to use them on your mod/mission pack.\r\n\r\n"
   PreviewImage: {fileID: 2800000, guid: 9832dd9294c5c75428e9cdc476b9f061, type: 3}
   Tags:
   - Regular Module
