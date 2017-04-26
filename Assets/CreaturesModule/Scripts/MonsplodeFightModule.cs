@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 public class MonsplodeFightModule : MonoBehaviour {
 
@@ -43,9 +44,6 @@ public class MonsplodeFightModule : MonoBehaviour {
 	void PickCreature()
 	{
 		crID=Random.Range(0,CD.size);
-		/*#if UNITY_EDITOR
-		crID = 22;
-		#endif*/
 
 		screenSR.sprite = CD.sprites [crID];
 	}
@@ -62,10 +60,6 @@ public class MonsplodeFightModule : MonoBehaviour {
 			int tem = Random.Range (0, movePool.Count);
 
 			int pickedMove=movePool[tem];
-			/*#if UNITY_EDITOR
-				if(i==3)
-				pickedMove=38;
-			#endif*/
 			buttons [i].GetComponentInChildren<TextMesh> ().text = MD.names [pickedMove];
 			moveIDs [i] = pickedMove;
 			movePool.Remove(pickedMove);
@@ -624,14 +618,21 @@ public class MonsplodeFightModule : MonoBehaviour {
 			if (responseDict ["on"] == "True")
 				hasAnyLit = true;
 		}
-		moduleCount = GetComponent<KMBombInfo> ().GetModuleNames ().Count;
-	
-			
-		//haveRJ45
-		#if UNITY_EDITOR
-		serialNumber="BOOO0F";
-		batteryCount=3;
-		#endif
-			
+		moduleCount = GetComponent<KMBombInfo> ().GetModuleNames ().Count;	
 	}
+
+    KMSelectable[] ProcessTwitchCommand(string command)
+    {
+        command = command.ToLowerInvariant().Trim();
+
+        if (Regex.IsMatch(command, @"^press (1|2|left|right)$"))
+        {
+            command = command.Substring(6);
+            if (command.Equals("1") || command.Equals("left")) return new KMSelectable[] { buttons[0] };
+            else if (command.Equals("2") || command.Equals("right")) return new KMSelectable[] { buttons[1] };
+        }
+
+        return null;
+    }
 }
+

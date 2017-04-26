@@ -1148,8 +1148,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 2
   Highlight: {fileID: 11459210}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11429724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1161,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c636f930403322b46b62f4b2abf87acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 11460960}
   CD: {fileID: 11400000, guid: 555eac9788949fe46a19d08fb4c054ce, type: 2}
   screenSR: {fileID: 21232104}
   buttons:
@@ -1191,8 +1196,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11461284}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11453646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1262,8 +1271,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11406796}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!212 &21232104
 SpriteRenderer:
   m_ObjectHideFlags: 1
