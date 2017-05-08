@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 public class MonsplodeWhoModule : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MonsplodeWhoModule : MonoBehaviour
     int crID;
     public float moveDelta;
     bool leftTrue, isActivated = false, revive = false;
+    private string textLeft, textRight;
+
     private static int _moduleIdCounter = 1;
     private int _moduleId;
 
@@ -104,6 +107,8 @@ public class MonsplodeWhoModule : MonoBehaviour
             buttons[0].GetComponentInChildren<TextMesh>().text = right;
             buttons[1].GetComponentInChildren<TextMesh>().text = wrong;
             leftTrue = true;
+            textLeft = right;
+            textRight = wrong;
             Debug.LogFormat("[Who's that Monsplode? #{0}] Correct answer is {1}, which is the left button.", _moduleId, right);
         }
         else
@@ -111,6 +116,8 @@ public class MonsplodeWhoModule : MonoBehaviour
             buttons[0].GetComponentInChildren<TextMesh>().text = wrong;
             buttons[1].GetComponentInChildren<TextMesh>().text = right;
             leftTrue = false;
+            textLeft = wrong;
+            textRight = right;
             Debug.LogFormat("[Who's that Monsplode? #{0}] Correct answer is {1}, which is the right button.", _moduleId, right);
         }
     }
@@ -133,6 +140,7 @@ public class MonsplodeWhoModule : MonoBehaviour
         }
 
     }
+
     IEnumerator GoUp()
     {
         while (buttons[0].transform.position != UP[0].transform.position)
@@ -145,6 +153,7 @@ public class MonsplodeWhoModule : MonoBehaviour
         TurnStuffOn();
         isActivated = true;
     }
+
     void TurnStuffOff()
     {
         screenSR.enabled = false;
@@ -169,15 +178,24 @@ public class MonsplodeWhoModule : MonoBehaviour
 
     KMSelectable[] ProcessTwitchCommand(string command)
     {
+        var btn = new List<KMSelectable>();
         command = command.ToLowerInvariant().Trim();
 
-        if (Regex.IsMatch(command, @"^press (1|2|left|right)$"))
+        if (Regex.IsMatch(command, @"^press [a-zA-Z]+$"))
         {
-            command = command.Substring(6);
-            if (command.Equals("1") || command.Equals("left")) return new KMSelectable[] { buttons[0] };
-            else if (command.Equals("2") || command.Equals("right")) return new KMSelectable[] { buttons[1] };
+            command = command.Substring(6).Trim();
+            if (command.Equals("1") || command.Equals("left") || command.Equals("l")) btn.Add(buttons[0]);
+            else if (command.Equals("2") || command.Equals("right") || command.Equals("r")) btn.Add(buttons[1]);
         }
+        else if (Regex.IsMatch(command, @"^name [a-zA-Z]+$"))
+        {
+            command = command.Substring(5).Trim();
+            if (command == textLeft) btn.Add(buttons[0]);
+            else if (command == textRight) btn.Add(buttons[1]);
+            else return null;
+        }
+        else return null;
 
-        return null;
+        return btn.ToArray();
     }
 }

@@ -1715,6 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc4c9ed771cdb2498563370f07e7e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Info: {fileID: 11481662}
+  Module: {fileID: 11456566}
+  Audio: {fileID: 11454590}
   CD: {fileID: 11400000, guid: 555eac9788949fe46a19d08fb4c054ce, type: 2}
   MD: {fileID: 11400000, guid: 8840a619773e5bf4095ae8ec69d84226, type: 2}
   screenSR: {fileID: 21215082}
@@ -1752,7 +1755,6 @@ MonoBehaviour:
   - {x: 7, y: 7, z: 0.5}
   - {x: 8, y: 3, z: 2}
   - {x: 8, y: 8, z: 0.5}
-  GrayLEDS: []
   DP:
   - {fileID: 443162}
   - {fileID: 484030}
@@ -1793,8 +1795,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11423840}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11423840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1888,8 +1894,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11419374}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11479778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1906,8 +1916,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11440394}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11481662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1939,8 +1953,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 2
   Highlight: {fileID: 11474642}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11483976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1957,8 +1975,12 @@ MonoBehaviour:
   IsPassThrough: 0
   ChildRowLength: 0
   Highlight: {fileID: 11471648}
-  SelectableArea: {fileID: 0}
+  SelectableColliders: []
   DefaultSelectableIndex: 0
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
+  ForceSelectionHighlight: 0
+  ForceInteractionHighlight: 0
 --- !u!114 &11498364
 MonoBehaviour:
   m_ObjectHideFlags: 1
