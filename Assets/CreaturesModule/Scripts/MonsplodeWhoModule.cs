@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class MonsplodeWhoModule : MonoBehaviour
 {
     public KMAudio Audio;
+    public KMNeedyModule NeedyModule;
     public CreatureDataObject CD;
     public SpriteRenderer screenSR;
     public KMSelectable[] buttons;
@@ -26,8 +27,9 @@ public class MonsplodeWhoModule : MonoBehaviour
 
     void Awake()
     {
-        GetComponent<KMNeedyModule>().OnNeedyActivation += OnNeedyActivation;
-        GetComponent<KMNeedyModule>().OnNeedyDeactivation += OnNeedyDeactivation;
+        NeedyModule.OnNeedyActivation += OnNeedyActivation;
+        NeedyModule.OnNeedyDeactivation += OnNeedyDeactivation;
+        NeedyModule.OnTimerExpired += OnTimerExpired;
         buttons[0].OnInteract += delegate ()
         {
             OnPress(true, 0);
@@ -38,12 +40,11 @@ public class MonsplodeWhoModule : MonoBehaviour
             OnPress(false, 1);
             return false;
         };
-        GetComponent<KMNeedyModule>().OnTimerExpired += OnTimerExpired;
     }
 
     protected bool Solve()
     {
-        GetComponent<KMNeedyModule>().OnPass();
+        NeedyModule.OnPass();
         return false;
     }
 
@@ -84,7 +85,7 @@ public class MonsplodeWhoModule : MonoBehaviour
     protected void OnTimerExpired()
     {
         StartCoroutine(GoDown());
-        GetComponent<KMNeedyModule>().HandleStrike();
+        NeedyModule.HandleStrike();
     }
 
     void ResetModule()
@@ -168,10 +169,10 @@ public class MonsplodeWhoModule : MonoBehaviour
 
     protected bool AddTime()
     {
-        float time = GetComponent<KMNeedyModule>().GetNeedyTimeRemaining();
+        float time = NeedyModule.GetNeedyTimeRemaining();
         if (time > 0)
         {
-            GetComponent<KMNeedyModule>().SetNeedyTimeRemaining(Mathf.Min(time + timeGain, timeMax));
+            NeedyModule.SetNeedyTimeRemaining(Mathf.Min(time + timeGain, timeMax));
         }
         return false;
     }
@@ -181,19 +182,27 @@ public class MonsplodeWhoModule : MonoBehaviour
         var btn = new List<KMSelectable>();
         command = command.ToLowerInvariant().Trim();
 
+        //position based
         if (Regex.IsMatch(command, @"^press [a-zA-Z]+$"))
         {
             command = command.Substring(6).Trim();
+
             if (command.Equals("1") || command.Equals("left") || command.Equals("l")) btn.Add(buttons[0]);
             else if (command.Equals("2") || command.Equals("right") || command.Equals("r")) btn.Add(buttons[1]);
+            else return null;
+
+            return btn.ToArray();
         }
+
+        //direct name with "name"
         else if (Regex.IsMatch(command, @"^name [a-zA-Z]+$"))
         {
             command = command.Substring(5).Trim();
-            if (command == textLeft) btn.Add(buttons[0]);
-            else if (command == textRight) btn.Add(buttons[1]);
-            else return null;
         }
+
+        //direct name without "name"
+        if (command == textLeft) btn.Add(buttons[0]);
+        else if (command == textRight) btn.Add(buttons[1]);
         else return null;
 
         return btn.ToArray();
