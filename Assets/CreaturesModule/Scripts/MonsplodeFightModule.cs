@@ -579,16 +579,16 @@ public class MonsplodeFightModule : MonoBehaviour
         }
 
         //direct name with "use"
-        else if (Regex.IsMatch(command, @"^use [a-zA-Z]+$"))
+        else if (Regex.IsMatch(command, @"^use [a-z ]+$"))
         {
             command = command.Substring(4).Trim();
         }
 
         //direct name without "use"
-        if (command == MD.names[moveIDs[0]].Replace('\n', ' ').Replace(" ", string.Empty).ToLowerInvariant()) btn.Add(buttons[0]);
-        else if (command == MD.names[moveIDs[1]].Replace('\n', ' ').Replace(" ", string.Empty).ToLowerInvariant()) btn.Add(buttons[1]);
-        else if (command == MD.names[moveIDs[2]].Replace('\n', ' ').Replace(" ", string.Empty).ToLowerInvariant()) btn.Add(buttons[2]);
-        else if (command == MD.names[moveIDs[3]].Replace('\n', ' ').Replace(" ", string.Empty).ToLowerInvariant()) btn.Add(buttons[3]);
+        if (command == MD.names[moveIDs[0]].Replace('\n', ' ').ToLowerInvariant()) btn.Add(buttons[0]);
+        else if (command == MD.names[moveIDs[1]].Replace('\n', ' ').ToLowerInvariant()) btn.Add(buttons[1]);
+        else if (command == MD.names[moveIDs[2]].Replace('\n', ' ').ToLowerInvariant()) btn.Add(buttons[2]);
+        else if (command == MD.names[moveIDs[3]].Replace('\n', ' ').ToLowerInvariant()) btn.Add(buttons[3]);
         else return null;
 
         return btn.ToArray();

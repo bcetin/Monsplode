@@ -195,14 +195,14 @@ public class MonsplodeWhoModule : MonoBehaviour
         }
 
         //direct name with "name"
-        else if (Regex.IsMatch(command, @"^name [a-zA-Z]+$"))
+        else if (Regex.IsMatch(command, @"^name [a-z ]+$"))
         {
             command = command.Substring(5).Trim();
         }
 
         //direct name without "name"
-        if (command == textLeft) btn.Add(buttons[0]);
-        else if (command == textRight) btn.Add(buttons[1]);
+        if (command == textLeft.ToLowerInvariant()) btn.Add(buttons[0]);
+        else if (command == textRight.ToLowerInvariant()) btn.Add(buttons[1]);
         else return null;
 
         return btn.ToArray();
