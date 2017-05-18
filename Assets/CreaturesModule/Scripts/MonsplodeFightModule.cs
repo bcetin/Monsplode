@@ -259,7 +259,6 @@ public class MonsplodeFightModule : MonoBehaviour
         {
             DAMAGE = Info.GetModuleNames().Count();
             Debug.LogFormat("[MonsplodeFight #{0}] Bedrock Module Count: {1}", _moduleId, Info.GetModuleNames().Count());
-            // ADD BUGS TO HERE
         }
         if (MD.specials[move] == "TIMELEFT")
         {
@@ -341,7 +340,12 @@ public class MonsplodeFightModule : MonoBehaviour
             Debug.LogFormat("[MonsplodeFight #{0}] BOOM must be used against Docsplode.", _moduleId);
             return 1000; // INFINITY ENOUGH?
         }
-
+        
+        // BOOM & CUTIE PIE CASE
+        if (CD.specials[crea] == "LOWEST" && MD.specials[move] == "BOOM")
+        {
+            return 1000;
+        }
         // BOB
         if (CD.specials[crea] == "BOB" && Info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.BOB) && MD.type[move] != 0)
         {
