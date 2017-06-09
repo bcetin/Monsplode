@@ -34,6 +34,14 @@ public class MonsplodeFightModule : MonoBehaviour
         _moduleId = _moduleIdCounter++;
         Init();
         Module.OnActivate += ActivateModule;
+        Info.OnBombExploded += BombExploded;
+    }
+
+    bool exploded;
+    int strikesToExplosion;
+    void BombExploded()
+    {
+        exploded = true;
     }
 
     void ActivateModule()
@@ -342,6 +350,13 @@ public class MonsplodeFightModule : MonoBehaviour
             return 1000; // INFINITY ENOUGH?
         }
 
+        // CUTIE PIE
+        if (CD.specials[crea] == "LOWEST" && MD.specials[move] == "BOOM")
+        {
+            Debug.LogFormat("[MonsplodeFight #{0}] How could you use BOOM against Cutie Pie?", _moduleId);
+            return 1000; // HOW COULD YOU?
+        }
+
         // BOB
         if (CD.specials[crea] == "BOB" && Info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.BOB) && MD.type[move] != 0)
         {
@@ -447,11 +462,11 @@ public class MonsplodeFightModule : MonoBehaviour
 
         if (MD.specials[moveIDs[buttonID]] == "BOOM" && CD.specials[crID] != "DOC")
         {
-            Module.HandleStrike();
-            Module.HandleStrike();
-            Module.HandleStrike();
-            Module.HandleStrike();
-            Module.HandleStrike();
+            while (!exploded)
+            {
+                Module.HandleStrike();
+                strikesToExplosion++;
+            }
             //BOOM!
             Debug.LogFormat("[MonsplodeFight #{0}] Pressed BOOM!", _moduleId);
         }
@@ -598,7 +613,7 @@ public class MonsplodeFightModule : MonoBehaviour
         {
             yield return "multiple strikes";
             OnPress(btn);
-            yield return "award strikes 5";
+            yield return string.Format("award strikes {0}",strikesToExplosion);
         }
         else
         {
