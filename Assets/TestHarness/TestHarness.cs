@@ -393,7 +393,7 @@ public class TestHarness : MonoBehaviour
                 if (f.FieldType.Equals(typeof(KMBombInfo)))
                 {
                     KMBombInfo component = (KMBombInfo) f.GetValue(s);
-                    component.TimeHandler += new KMBombInfo.GetTimeHandler(fakeInfo.GetTime);
+                    component.TimeHandler +=new KMBombInfo.GetTimeHandler(fakeInfo.GetTime);
                     component.FormattedTimeHandler += new KMBombInfo.GetFormattedTimeHandler(fakeInfo.GetFormattedTime);
                     component.StrikesHandler += new KMBombInfo.GetStrikesHandler(fakeInfo.GetStrikes);
                     component.ModuleNamesHandler += new KMBombInfo.GetModuleNamesHandler(fakeInfo.GetModuleNames);

@@ -18,4 +18,9 @@ public class YourClassAsset
 	{
 		ScriptableObjectUtility.CreateAsset<MovesDataObject> ();
 	}
+	[MenuItem("Assets/Create/CardsDataObject")]
+	public static void CreateABrandNewAsset()
+	{
+		ScriptableObjectUtility.CreateAsset<CardsDataObject>();
+	}
 }
