@@ -12,11 +12,30 @@ MonoBehaviour:
   m_Name: Cards
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 5ac3a9b1afe414040aca35ac3f17b7c2, type: 3}
+  - {fileID: 21300000, guid: afeb87d0e86ac314599e9ec1fbb1146e, type: 3}
+  - {fileID: 21300000, guid: 85f3aa934ab21e14f8941eebcc708966, type: 3}
+  - {fileID: 21300000, guid: a78e738def7bd65419addf30da1ad18d, type: 3}
+  - {fileID: 21300000, guid: 83efdec5b5526ae4eac09662eb264578, type: 3}
+  - {fileID: 21300000, guid: 6496304867d67544696cd26976cb7181, type: 3}
+  - {fileID: 21300000, guid: e1cc9f4a03c634545a4eaba1b64a3a9d, type: 3}
+  - {fileID: 21300000, guid: 7c65c9bc6c387d24eb245291db822a38, type: 3}
   names:
-  - 
-  - 
-  - 
-  size: 3
+  - Bob
+  - Ukkens
+  - Lugirit
+  - Docs
+  - Clondar
+  - Melbor
+  - Magmy
+  - Buhar
+  inital:
+  - {x: 3, y: 4, z: 3}
+  - {x: 2, y: 3, z: 1}
+  - {x: 4, y: 2, z: 3}
+  - {x: 3, y: 3, z: 1}
+  - {x: 5, y: 1, z: 3}
+  - {x: 2, y: 3, z: 4}
+  - {x: 4, y: 1, z: 2}
+  - {x: 3, y: 5, z: 2}
+  size: 8
