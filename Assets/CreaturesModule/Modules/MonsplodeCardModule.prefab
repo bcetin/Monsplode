@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014210601100}
   - 212: {fileID: 212000011457472856}
+  - 114: {fileID: 114000011668757862}
   m_Layer: 0
   m_Name: OfferSprite
   m_TagString: Untagged
@@ -537,6 +538,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012707570928}
   - 212: {fileID: 212000010061992970}
+  - 114: {fileID: 114000013785534958}
   m_Layer: 0
   m_Name: DeckSprite
   m_TagString: Untagged
@@ -1879,6 +1881,19 @@ MonoBehaviour:
   AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
+--- !u!114 &114000011668757862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010758318310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - Sprites/Default
 --- !u!114 &114000011706247632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2055,6 +2070,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - GUI/KT 3D Text
+--- !u!114 &114000013785534958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013836085350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - Sprites/Default
 --- !u!114 &114000013841900376
 MonoBehaviour:
   m_ObjectHideFlags: 1
