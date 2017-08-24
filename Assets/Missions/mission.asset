@@ -15,7 +15,7 @@ MonoBehaviour:
   Description: Testing mission for Monsplode Card Module. You can use the google doc
     as manual. Contact clutterArranger on discord for your comments and ideas.
   GeneratorSetting:
-    TimeLimit: 1200
+    TimeLimit: 2400
     NumStrikes: 3
     TimeBeforeNeedyActivation: 90
     FrontFaceOnly: 1

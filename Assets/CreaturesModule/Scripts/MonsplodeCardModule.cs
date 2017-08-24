@@ -47,7 +47,9 @@ public class MonsplodeCardModule : MonoBehaviour
 	void Start()
 	{
 		_moduleId = _moduleIdCounter++;
-		Init();
+	}
+	private void Awake()
+	{
 		Module.OnActivate += ActivateModule;
 		keep.OnInteract += delegate ()
 		{
@@ -84,6 +86,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	}
 	void ActivateModule()
 	{
+		Init();
 		isActivated = true;
 		deckSR.enabled = true;
 		offerSR.enabled = true;
