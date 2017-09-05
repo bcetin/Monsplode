@@ -9,8 +9,8 @@ public class MonsplodeCardModule : MonoBehaviour
 	public KMAudio Audio;
 	public CardsDataObject CD;
 	public KMSelectable next,prev,keep,trade;
-	public TextMesh deckTM,offerTM;
-	public SpriteRenderer deckSR, offerSR;
+	public TextMesh deckTM,offerTM,deckVersion,offerVersion,deckRarity,offerRarity;
+	public SpriteRenderer deckSR, offerSR,deckBack,offerBack;
 	public int deckSize, offerCount;
 	int lowestCardInDeck=0;
 	bool isActivated = false;
@@ -19,27 +19,13 @@ public class MonsplodeCardModule : MonoBehaviour
 	public char[] raritySymbols;
 	public Card[] deck;
 	public Card offer;
-
+	public SpriteRenderer[] DeckFlaps,DeckNormals,DeckBents,OfferFlaps,OfferNormals,OfferBents;
 	public int currentOffer=0,correctOffer=0, currentDeck=0;
 	public enum SerialStates
 	{
 		numbers,letters,both
 	};
 	SerialStates state;
-	//FOR TESTING
-	/*
-	private void Update()
-	{
-		
-		if (Input.GetKeyDown(KeyCode.RightArrow))
-			PrevCardPress();
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			NextCardPress();
-		if (Input.GetKeyDown(KeyCode.K))
-			KeepPress();
-		if (Input.GetKeyDown(KeyCode.L))
-			TradePress();
-	}*/
 	private void PrintDebug(string str)
 	{
 		Debug.LogFormat("[MonsplodeCards #{0}] "+str, _moduleId);
@@ -47,6 +33,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	void Start()
 	{
 		_moduleId = _moduleIdCounter++;
+		
 	}
 	private void Awake()
 	{
@@ -72,8 +59,8 @@ public class MonsplodeCardModule : MonoBehaviour
 			return false;
 		};
 		// Turnoff cards for start.
-		deckSR.enabled = false;
-		offerSR.enabled = false;
+		deckBack.enabled = offerBack.enabled = true; // Enable Card Backs
+		deckSR.enabled = offerSR.enabled = false; // Turn Off Monsplodes
 		deckTM.text = "";
 		offerTM.text = "";
 	}
@@ -90,6 +77,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		isActivated = true;
 		deckSR.enabled = true;
 		offerSR.enabled = true;
+		deckBack.enabled = offerBack.enabled = false;
 		UpdateCardVisuals();
 		//screenSR.enabled = true;
 	}
@@ -133,62 +121,7 @@ public class MonsplodeCardModule : MonoBehaviour
 			value+=2;
 			PrintDebug("Print version numeral is equal to battery count. Add 2.\nCurrent value: " + value);
 		}
-		// Bob -> =8 rule
-		if (c.monsplode == 0) // ADD NEW BOBS HERE IF ANY SHOWS UP
-		{
-			if(Info.IsIndicatorPresent(KMBombInfoExtensions.KnownIndicatorLabel.BOB))
-			{
-				value = 8;
-				PrintDebug("There is a lit BOB indicator and monsplode on the card is a Bob variation.\n Value is now 8.");
-			}
-		}
-		// C4 -> =5 rule
-		if (c.printChar == 'C' && c.printDigit == 4)
-		{
-			value = 5;
-			PrintDebug("Print version is 'C4'\n Value is now 5.");
-		}
-		// H + >2 battery -? replace rule
-		if (c.printChar == 'H' && Info.GetBatteryCount()>2)
-		{
-			value = c.printDigit;
-			PrintDebug("Print version letter is 'H' and there are more than 2 batteries. Replacing value with print version numeral. Value is now " + value + ".");
-		}
-		// 7 && no indicator -> -3 rule
-		if (c.printDigit == 7)
-		{
-			bool tem = true;
-			foreach (string s in Info.GetIndicators())
-				tem = false;
-			if (tem)
-			{
-				value -=3;
-				PrintDebug("Print version numeral is 7 and there are no indicators. Subtract 3.\n Value is now " + value +".");
-			}
-		}
-		// E && Serial port -> +2 rule
-		if (c.printChar == 'E' && Info.IsPortPresent(KMBombInfoExtensions.KnownPortType.Serial))
-		{
-			value += 2;
-			PrintDebug("Print version letter is 'E' and there is a Serial port present. Add 2.\n Current value: " + value);
-		}
-		// 1 -> -1 rule
-		if (c.printDigit == -1)
-		{
-			value -= 1;
-			PrintDebug("Print version numeral is 1. Subtract -1.\n Current value: " + value);
-		}
-		if (value < 0)
-		{
-			PrintDebug("Value is negative. Card has no value. Value is 0.");
-			value = 0;
-		}
-		// >5 && K in serial -> +3 rule CANCELLED FOR NOW
-		/*if (c.printDigit > 5 && Info.GetSerialNumber().Contains("K"))
-		{
-			value += 3;
-			PrintDebug("Print version numeral is 1. Subtract -1.\n Current value: " + value);
-		}*/
+		// Multipler part
 		float[] mulLookup=new float[]{1f,1.25f,1.5f,1.75f};
 		float mul = mulLookup[c.rarity];
 		PrintDebug("Base rarity multipler from the symbol: " + mul);
@@ -322,10 +255,48 @@ public class MonsplodeCardModule : MonoBehaviour
 	{
 		return "Monsplode: " + CD.names[c.monsplode] + "\nRarity: " + raritySymbols[c.rarity] + "\nPrint Version: " + c.printChar + c.printDigit + "\nHolographic: " + c.isHolographic + "\nBent Corners: " + c.bentCorners;
 	}
+
+	void HandleFlapVisuals(bool[] which,SpriteRenderer[] normal,SpriteRenderer[] bent, SpriteRenderer[] flap)
+	{
+		for (int i = 0; i < 4; i++)
+			if (which[i])
+			{
+				normal[i].enabled = false;
+				bent[i].enabled = flap[i].enabled = true;
+			}
+			else
+			{
+				normal[i].enabled = true;
+				bent[i].enabled = flap[i].enabled = false;
+			}
+	}
+	bool[] GenerateFlapState(int seed,int count) // MAke flaps random for each card but make it stable per card.
+	{
+		bool[] arr = new bool[4];
+		for(int i=0; i<4;i++)
+			arr[i]=false;
+		int add=seed%4,start=seed%5;
+		if (add == 0) add = -1;
+		if (add == 2) add = -3;
+		if (start == 4) start = 2;
+		for (int i = 0; i < count; i++)
+		{
+			arr[start] = true;
+			start = (start + add + 4) % 4;
+		}
+		return arr;
+	}
 	void UpdateCardVisuals()
 	{
-		deckTM.text = CardToText(deck[currentDeck]);
-		offerTM.text = CardToText(offer);
+		//Deck Card Part
+		HandleFlapVisuals(GenerateFlapState(deck[currentDeck].printDigit + deck[currentDeck].printChar, deck[currentDeck].bentCorners),DeckNormals,DeckBents,DeckFlaps); // Bent Corners
+		
+		deckRarity.text = raritySymbols[deck[currentDeck].rarity] + ""; // Rarity Symbol
+		deckVersion.text = deck[currentDeck].printChar + "" + deck[currentDeck].printDigit;// Print Version
+		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode]; // Monsplode Image
+
+		//deckTM.text = CardToText(deck[currentDeck]); // Visual Debug.
+		//Offer Card Part
 		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode];
 		offerSR.sprite = CD.sprites[offer.monsplode];
 	}
