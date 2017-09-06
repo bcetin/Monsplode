@@ -9,7 +9,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	public KMAudio Audio;
 	public CardsDataObject CD;
 	public KMSelectable next,prev,keep,trade;
-	public TextMesh deckTM,offerTM,deckVersion,offerVersion,deckRarity,offerRarity;
+	public TextMesh deckTM,offerTM,deckVersion,offerVersion,deckRarity,offerRarity,deckFlavor,offerFlavor;
 	public SpriteRenderer deckSR, offerSR,deckBack,offerBack;
 	public int deckSize, offerCount;
 	int lowestCardInDeck=0;
@@ -21,9 +21,10 @@ public class MonsplodeCardModule : MonoBehaviour
 	public Card offer;
 	public SpriteRenderer[] DeckFlaps,DeckNormals,DeckBents,OfferFlaps,OfferNormals,OfferBents;
 	public int currentOffer=0,correctOffer=0, currentDeck=0;
+	public GameObject deckGlitters,offerGlitters,deckFrontFace,offerFrontFace;
 	public enum SerialStates
 	{
-		numbers,letters,both
+		numbers,letters,numlet,letnum
 	};
 	SerialStates state;
 	private void PrintDebug(string str)
@@ -60,23 +61,31 @@ public class MonsplodeCardModule : MonoBehaviour
 		};
 		// Turnoff cards for start.
 		deckBack.enabled = offerBack.enabled = true; // Enable Card Backs
-		deckSR.enabled = offerSR.enabled = false; // Turn Off Monsplodes
+		deckFrontFace.SetActive(false);
+		foreach (SpriteRenderer sr in DeckNormals)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in DeckBents)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in DeckFlaps)
+			sr.enabled = false;
+		/*deckSR.enabled = offerSR.enabled = false; // Turn Off Monsplodes
+		deckGlitters.SetActive(false);
 		deckTM.text = "";
-		offerTM.text = "";
+		offerTM.text = "";*/
 	}
 	void ShowCardBacks()
 	{
-		deckSR.enabled = false;
-		offerSR.enabled = false;
-		deckTM.text = "";
-		offerTM.text = "";
+		isActivated = false;
+		deckFrontFace.SetActive(false);
+		deckBack.enabled = true;
 	}
 	void ActivateModule()
 	{
 		Init();
 		isActivated = true;
-		deckSR.enabled = true;
-		offerSR.enabled = true;
+		deckFrontFace.SetActive(true);
+		/*deckSR.enabled = true;
+		offerSR.enabled = true;*/
 		deckBack.enabled = offerBack.enabled = false;
 		UpdateCardVisuals();
 		//screenSR.enabled = true;
@@ -142,7 +151,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		for (int i = 0; i < 4; i++)
 			if(Random.value < 0.20)
 				bent++;
-		Card c = new Card(Random.Range(0,CD.size) , Random.Range(0,4), Random.Range(1,10) , (char)Random.Range('A','I'+1),Random.value<0.15,bent); // SHOuLD RARE CARDS BE RARE? Bent corners and holo
+		Card c = new Card(Random.Range(0,CD.size) , Random.Range(0,4), Random.Range(1,10) , (char)Random.Range('A','I'+1),Random.value<0.21,bent); // SHOuLD RARE CARDS BE RARE? Bent corners and holo
 		string[] mulNames = new string[]{"Common","Uncommon","Rare","Very Rare"};
 		PrintDebug("Monsplode: "+CD.names[c.monsplode]+" | Rarity: " + mulNames[c.rarity] +"\nPrint Version: " + c.printChar+c.printDigit+ " | Holographic: "+c.isHolographic+ " | Bent Corners: " + c.bentCorners);
 		c.value = CalculateCardValue(c);
@@ -294,8 +303,9 @@ public class MonsplodeCardModule : MonoBehaviour
 		deckRarity.text = raritySymbols[deck[currentDeck].rarity] + ""; // Rarity Symbol
 		deckVersion.text = deck[currentDeck].printChar + "" + deck[currentDeck].printDigit;// Print Version
 		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode]; // Monsplode Image
-
-		//deckTM.text = CardToText(deck[currentDeck]); // Visual Debug.
+		deckGlitters.SetActive(deck[currentDeck].isHolographic);//Holographic
+		deckTM.text = CD.names[deck[currentDeck].monsplode]; // Card Name
+		deckFlavor.text = CD.flavorText[deck[currentDeck].monsplode]; // Flavor Text
 		//Offer Card Part
 		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode];
 		offerSR.sprite = CD.sprites[offer.monsplode];
@@ -315,12 +325,12 @@ public class MonsplodeCardModule : MonoBehaviour
 			if ('A' <= second && second <= 'Z')
 				state = SerialStates.letters;
 			else
-				state = SerialStates.both;
+				state = SerialStates.letnum;
 		}
 		else
 		{
 			if ('A' <= second && second <= 'Z')
-				state = SerialStates.both;
+				state = SerialStates.numlet;
 			else
 				state = SerialStates.numbers;
 		}
