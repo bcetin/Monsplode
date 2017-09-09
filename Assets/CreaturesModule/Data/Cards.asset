@@ -66,9 +66,19 @@ MonoBehaviour:
 
     small towns from
 
-    sad sad, black and
+    sad sad, stormy,
 
-    dark rain clouds.'
+    scary and dark
+
+    rain clouds.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - '"Hi. I''m Bob."
+
+    -Bob'
   - 'No flavor text
 
     for this card
@@ -79,26 +89,16 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'No flavor text
+  - 'Aluga is a
 
-    for this card
+    joyful soul.
 
-    yet.'
-  - 'No flavor text
+    He just never
 
-    for this card
+    really got along
 
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
+    with his brother.'
+  - "Lugirit is easy\nto tip off.\nIt\u2019s like he\u2019s\nalways angry at\neverything."
   - 'No flavor text
 
     for this card
@@ -141,6 +141,9 @@ MonoBehaviour:
     for this card
 
     yet.'
+  - 'Mitochondria is
+
+    Pouse of the cell.'
   - 'No flavor text
 
     for this card
@@ -156,12 +159,7 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'Zenlad is from
+  - 'Zenlads are from
 
     a far away planet.
 
@@ -185,11 +183,21 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'No flavor text
+  - 'Cutie Pie is not
 
-    for this card
+    an enemy! If you
 
-    yet.'
+    treat him as a
+
+    friend, he will be
+
+    caring, charitable,
+
+    compassionate,
+
+    thoughtful
+
+    and very kind.'
   inital:
   - {x: 3, y: 5, z: 2, w: 2}
   - {x: 3, y: 2, z: 4, w: 3}

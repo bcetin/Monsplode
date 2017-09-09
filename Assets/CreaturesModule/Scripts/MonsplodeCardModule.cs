@@ -19,7 +19,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	public char[] raritySymbols;
 	public Card[] deck;
 	public Card offer;
-	public SpriteRenderer[] DeckFlaps,DeckNormals,DeckBents,OfferFlaps,OfferNormals,OfferBents;
+	public SpriteRenderer[] DeckFlaps,DeckNormals,DeckBents,OfferFlaps,OfferNormals,OfferBents,StageCount;
 	public int currentOffer=0,correctOffer=0, currentDeck=0;
 	public GameObject deckGlitters,offerGlitters,deckFrontFace,offerFrontFace;
 	public enum SerialStates
@@ -62,11 +62,18 @@ public class MonsplodeCardModule : MonoBehaviour
 		// Turnoff cards for start.
 		deckBack.enabled = offerBack.enabled = true; // Enable Card Backs
 		deckFrontFace.SetActive(false);
+		offerFrontFace.SetActive(false);
 		foreach (SpriteRenderer sr in DeckNormals)
 			sr.enabled = false;
 		foreach (SpriteRenderer sr in DeckBents)
 			sr.enabled = false;
 		foreach (SpriteRenderer sr in DeckFlaps)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferNormals)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferBents)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferFlaps)
 			sr.enabled = false;
 		/*deckSR.enabled = offerSR.enabled = false; // Turn Off Monsplodes
 		deckGlitters.SetActive(false);
@@ -77,20 +84,42 @@ public class MonsplodeCardModule : MonoBehaviour
 	{
 		isActivated = false;
 		deckFrontFace.SetActive(false);
-		deckBack.enabled = true;
+		offerFrontFace.SetActive(false);
+		deckBack.enabled = offerBack.enabled = true;
+		foreach (SpriteRenderer sr in DeckNormals)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in DeckBents)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in DeckFlaps)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferNormals)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferBents)
+			sr.enabled = false;
+		foreach (SpriteRenderer sr in OfferFlaps)
+			sr.enabled = false;
+		UpdateStageCounter();
 	}
 	void ActivateModule()
 	{
 		Init();
 		isActivated = true;
 		deckFrontFace.SetActive(true);
+		offerFrontFace.SetActive(true);
 		/*deckSR.enabled = true;
 		offerSR.enabled = true;*/
 		deckBack.enabled = offerBack.enabled = false;
 		UpdateCardVisuals();
 		//screenSR.enabled = true;
 	}
-
+	void UpdateStageCounter()
+	{
+		for (int i = 0; i < 3; i++)
+			if (i < correctOffer)
+				StageCount[i].color = Color.green;
+			else
+				StageCount[i].color = new Color(1,1,1,0.4f);
+	}
 	float CalculateCardValue(Card c)
 	{
 		//Debug.Log(c.monsplode);
@@ -297,18 +326,28 @@ public class MonsplodeCardModule : MonoBehaviour
 	}
 	void UpdateCardVisuals()
 	{
-		//Deck Card Part
 		HandleFlapVisuals(GenerateFlapState(deck[currentDeck].printDigit + deck[currentDeck].printChar, deck[currentDeck].bentCorners),DeckNormals,DeckBents,DeckFlaps); // Bent Corners
-		
+		HandleFlapVisuals(GenerateFlapState(offer.printDigit + offer.printChar, offer.bentCorners), OfferNormals, OfferBents, OfferFlaps);
+
 		deckRarity.text = raritySymbols[deck[currentDeck].rarity] + ""; // Rarity Symbol
-		deckVersion.text = deck[currentDeck].printChar + "" + deck[currentDeck].printDigit;// Print Version
+		offerRarity.text = raritySymbols[offer.rarity] + "";
+
+		deckVersion.text = deck[currentDeck].printChar + "" + deck[currentDeck].printDigit; // Print Version
+		offerVersion.text = offer.printChar + "" + offer.printDigit;
+
 		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode]; // Monsplode Image
-		deckGlitters.SetActive(deck[currentDeck].isHolographic);//Holographic
-		deckTM.text = CD.names[deck[currentDeck].monsplode]; // Card Name
-		deckFlavor.text = CD.flavorText[deck[currentDeck].monsplode]; // Flavor Text
-		//Offer Card Part
-		deckSR.sprite = CD.sprites[deck[currentDeck].monsplode];
 		offerSR.sprite = CD.sprites[offer.monsplode];
+
+		deckGlitters.SetActive(deck[currentDeck].isHolographic); //Holographic
+		offerGlitters.SetActive(offer.isHolographic);
+
+		deckTM.text = CD.names[deck[currentDeck].monsplode]; // Card Name
+		offerTM.text = CD.names[offer.monsplode];
+
+		deckFlavor.text = CD.flavorText[deck[currentDeck].monsplode]; // Flavor Text
+		offerFlavor.text = CD.flavorText[offer.monsplode];
+
+		UpdateStageCounter();
 	}
 	void ResetOffer()
 	{
