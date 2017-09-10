@@ -2115,8 +2115,8 @@ Transform:
   m_GameObject: {fileID: 1000010977919626}
   m_LocalRotation: {x: 0.00000008940697, y: -1.4210855e-14, z: -0.00000016292068,
     w: 1}
-  m_LocalPosition: {x: 0.30296355, y: 0.040209807, z: 0}
-  m_LocalScale: {x: 1.072363, y: 0.43593982, z: 1.7151778}
+  m_LocalPosition: {x: 0.3, y: -0.07, z: -0}
+  m_LocalScale: {x: 0.9089066, y: 0.36949107, z: 1.4537394}
   m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 4000011070960244}
@@ -2711,8 +2711,8 @@ Transform:
   m_GameObject: {fileID: 1000011451903594}
   m_LocalRotation: {x: 0.00000008940697, y: -1.4210855e-14, z: -0.00000016292068,
     w: 1}
-  m_LocalPosition: {x: 0.30296355, y: 0.040209807, z: 0}
-  m_LocalScale: {x: 1.072363, y: 0.43593982, z: 1.7151778}
+  m_LocalPosition: {x: 0.3, y: -0.07, z: -0}
+  m_LocalScale: {x: 0.9089066, y: 0.36949107, z: 1.4537394}
   m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012707570928}
@@ -3578,7 +3578,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010977919626}
-  m_Text: Docsplode
+  m_Text: 'Docsplode
+
+    More Text'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -3746,7 +3748,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011451903594}
-  m_Text: Docsplode
+  m_Text: 'Docsplode
+
+    More'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -5148,7 +5152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: c1d5a5082a44e4445ba61b18ded69afd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1851a49e1482dc749a058743a7e9b880, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

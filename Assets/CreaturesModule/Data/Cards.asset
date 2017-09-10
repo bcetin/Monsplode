@@ -13,54 +13,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300000, guid: 7c65c9bc6c387d24eb245291db822a38, type: 3}
-  - {fileID: 21300000, guid: 69339bebbf9a47646b5c0d80889662fd, type: 3}
-  - {fileID: 21300000, guid: 5ac3a9b1afe414040aca35ac3f17b7c2, type: 3}
-  - {fileID: 21300000, guid: cdcff66e83b89ba4482d23385ff5d9c0, type: 3}
-  - {fileID: 21300000, guid: c7ab3260ac5eb964a8335a30de290f41, type: 3}
-  - {fileID: 21300000, guid: 5deb605a21a649444aa85668b85768a2, type: 3}
-  - {fileID: 21300000, guid: 85f3aa934ab21e14f8941eebcc708966, type: 3}
-  - {fileID: 21300000, guid: 8a9b37053326ca9429d6136f54c4f836, type: 3}
   - {fileID: 21300000, guid: 481a8a4a5bb7bf740a87d0a717a6ee93, type: 3}
-  - {fileID: 21300000, guid: 9ab419abbf2479b4aaee3f03b7a7fdb1, type: 3}
+  - {fileID: 21300000, guid: 69339bebbf9a47646b5c0d80889662fd, type: 3}
+  - {fileID: 21300000, guid: a78e738def7bd65419addf30da1ad18d, type: 3}
+  - {fileID: 21300000, guid: 5ac3a9b1afe414040aca35ac3f17b7c2, type: 3}
+  - {fileID: 21300000, guid: e1cc9f4a03c634545a4eaba1b64a3a9d, type: 3}
+  - {fileID: 21300000, guid: c1d5a5082a44e4445ba61b18ded69afd, type: 3}
   - {fileID: 21300000, guid: 0476e351342b38b43bff0a3d6b239898, type: 3}
   - {fileID: 21300000, guid: 6496304867d67544696cd26976cb7181, type: 3}
-  - {fileID: 21300000, guid: 83efdec5b5526ae4eac09662eb264578, type: 3}
-  - {fileID: 21300000, guid: a78e738def7bd65419addf30da1ad18d, type: 3}
-  - {fileID: 21300000, guid: e1cc9f4a03c634545a4eaba1b64a3a9d, type: 3}
+  - {fileID: 21300000, guid: b99bb4cc01409a54595817c5d728e5a0, type: 3}
   - {fileID: 21300000, guid: a42c92a28a7f8a0468cc5d630587f1bf, type: 3}
-  - {fileID: 21300000, guid: afeb87d0e86ac314599e9ec1fbb1146e, type: 3}
+  - {fileID: 21300000, guid: c7ab3260ac5eb964a8335a30de290f41, type: 3}
+  - {fileID: 21300000, guid: 5deb605a21a649444aa85668b85768a2, type: 3}
   - {fileID: 21300000, guid: 5fd21dad1d374554f949a3c842d54ec6, type: 3}
   - {fileID: 21300000, guid: 618a4e4646419314fb974f033725c868, type: 3}
-  - {fileID: 21300000, guid: 7485d986b7a52614c924dfc0b13c538f, type: 3}
+  - {fileID: 21300000, guid: 8a9b37053326ca9429d6136f54c4f836, type: 3}
+  - {fileID: 21300000, guid: 83efdec5b5526ae4eac09662eb264578, type: 3}
   - {fileID: 21300000, guid: ff3d51335e4b8fd4da3deafe5c9c04d1, type: 3}
-  - {fileID: 21300000, guid: c1d5a5082a44e4445ba61b18ded69afd, type: 3}
+  - {fileID: 21300000, guid: 9ab419abbf2479b4aaee3f03b7a7fdb1, type: 3}
   - {fileID: 21300000, guid: a497007c39051c8468ba38c86811ef9a, type: 3}
-  - {fileID: 21300000, guid: b99bb4cc01409a54595817c5d728e5a0, type: 3}
+  - {fileID: 21300000, guid: cdcff66e83b89ba4482d23385ff5d9c0, type: 3}
+  - {fileID: 21300000, guid: afeb87d0e86ac314599e9ec1fbb1146e, type: 3}
+  - {fileID: 21300000, guid: 85f3aa934ab21e14f8941eebcc708966, type: 3}
+  - {fileID: 21300000, guid: 7485d986b7a52614c924dfc0b13c538f, type: 3}
+  - {fileID: 21300000, guid: 2068857011bf08548a752f1b3ead3299, type: 3}
+  - {fileID: 21300000, guid: cc8d60e754b3eba4ea2bf9272abc1c12, type: 3}
+  - {fileID: 21300000, guid: 1851a49e1482dc749a058743a7e9b880, type: 3}
+  - {fileID: 21300000, guid: 32b70dcdba9f5864591b307f2dd31f74, type: 3}
   names:
   - Buhar
-  - Lanaluff
-  - Bob
-  - Mountoise
-  - Nibs
-  - Aluga
-  - Lugirit
-  - Caadarim
   - Vellarim
-  - Flaurim
+  - Lanaluff
+  - Docsplode
+  - Bob
+  - Magmy
+  - Myrchat
   - Gloorim
   - Melbor
-  - Clondar
-  - Docsplode
-  - Magmy
+  - Cutie Pie
   - Pouse
-  - Ukkens
+  - Nibs
+  - Aluga
   - Asteran
   - Violan
-  - Zenlad
+  - Caadarim
+  - Clondar
   - Zapra
-  - Myrchat
+  - Flaurim
   - Percy
-  - Cutie Pie
+  - Mountoise
+  - Ukkens
+  - Lugirit
+  - Zenlad
+  - 'Melbor,
+
+    The Web Bug'
+  - 'Aluga,
+
+    The Fighter'
+  - 'Buhar,
+
+    The Protector'
+  - 'Bob,
+
+    The Ancestor'
   flavorText:
   - 'Buhar protects
 
@@ -76,29 +92,6 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - '"Hi. I''m Bob."
-
-    -Bob'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'Aluga is a
-
-    joyful soul.
-
-    He just never
-
-    really got along
-
-    with his brother.'
-  - "Lugirit is easy\nto tip off.\nIt\u2019s like he\u2019s\nalways angry at\neverything."
   - 'No flavor text
 
     for this card
@@ -119,31 +112,6 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'Something...
-
-    Something...
-
-    Spider thing?'
-  - 'Is it a robot?
-
-    Is it a clock?
-
-    Is it a calendar?
-
-    No, it''s Clondar!'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'Mitochondria is
-
-    Pouse of the cell.'
   - 'No flavor text
 
     for this card
@@ -159,15 +127,6 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'Zenlads are from
-
-    a far away planet.
-
-    This one was just
-
-    visiting our planet.
-
-    It decided to stay.'
   - 'No flavor text
 
     for this card
@@ -183,44 +142,113 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'Cutie Pie is not
+  - 'No flavor text
 
-    an enemy! If you
+    for this card
 
-    treat him as a
+    yet.'
+  - 'No flavor text
 
-    friend, he will be
+    for this card
 
-    caring, charitable,
+    yet.'
+  - 'No flavor text
 
-    compassionate,
+    for this card
 
-    thoughtful
+    yet.'
+  - 'No flavor text
 
-    and very kind.'
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
   inital:
   - {x: 3, y: 5, z: 2, w: 2}
+  - {x: 2, y: 4, z: 3, w: 2}
   - {x: 3, y: 2, z: 4, w: 3}
   - {x: 5, y: 2, z: 2, w: 4}
-  - {x: 3, y: 2, z: 3, w: 4}
-  - {x: 4, y: 3, z: 2, w: 3}
-  - {x: 2, y: 2, z: 4, w: 3}
-  - {x: 2, y: 3, z: 3, w: 3}
-  - {x: 2, y: 2, z: 3, w: 4}
-  - {x: 2, y: 4, z: 3, w: 2}
-  - {x: 2, y: 2, z: 4, w: 3}
-  - {x: 2, y: 5, z: 2, w: 2}
-  - {x: 3, y: 2, z: 4, w: 4}
-  - {x: 5, y: 3, z: 4, w: 2}
   - {x: 5, y: 2, z: 2, w: 4}
   - {x: 3, y: 4, z: 2, w: 3}
+  - {x: 3, y: 2, z: 4, w: 2}
+  - {x: 2, y: 5, z: 2, w: 2}
+  - {x: 3, y: 2, z: 4, w: 4}
+  - {x: 4, y: 2, z: 2, w: 4}
   - {x: 3, y: 2, z: 3, w: 3}
-  - {x: 3, y: 4, z: 3, w: 2}
+  - {x: 4, y: 3, z: 2, w: 3}
+  - {x: 2, y: 2, z: 4, w: 3}
   - {x: 2, y: 2, z: 2, w: 5}
   - {x: 2, y: 3, z: 2, w: 4}
-  - {x: 4, y: 4, z: 2, w: 2}
+  - {x: 2, y: 2, z: 3, w: 4}
+  - {x: 5, y: 3, z: 4, w: 2}
   - {x: 3, y: 3, z: 2, w: 4}
-  - {x: 3, y: 2, z: 4, w: 2}
+  - {x: 2, y: 2, z: 4, w: 3}
   - {x: 4, y: 3, z: 2, w: 3}
-  - {x: 4, y: 2, z: 2, w: 4}
-  size: 24
+  - {x: 3, y: 2, z: 3, w: 4}
+  - {x: 3, y: 4, z: 3, w: 2}
+  - {x: 2, y: 3, z: 3, w: 3}
+  - {x: 4, y: 4, z: 2, w: 2}
+  - {x: 6, y: 4, z: 4, w: 4}
+  - {x: 3, y: 6, z: 5, w: 4}
+  - {x: 4, y: 6, z: 3, w: 5}
+  - {x: 4, y: 5, z: 4, w: 6}
+  size: 28

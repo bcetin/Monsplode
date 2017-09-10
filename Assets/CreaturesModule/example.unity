@@ -129,6 +129,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 212000011039114300, guid: aa1cacac5f95ea3459dc9209294bf4da,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 32b70dcdba9f5864591b307f2dd31f74,
+        type: 3}
+    - target: {fileID: 212000013872560462, guid: aa1cacac5f95ea3459dc9209294bf4da,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc8d60e754b3eba4ea2bf9272abc1c12,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa1cacac5f95ea3459dc9209294bf4da, type: 2}
   m_IsPrefabParent: 0
