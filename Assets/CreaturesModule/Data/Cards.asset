@@ -78,150 +78,153 @@ MonoBehaviour:
 
     The Ancestor'
   flavorText:
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - '"Hi. I''m Bob."
+
+    -Bob'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'Mitochondria is
+
+    Pouse of the cell.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'Aluga is a joyful
+
+    soul. He just never
+
+    really got along
+
+    with his brother.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'Tick, tock,
+
+    tick, tock...
+
+    Your time is
+
+    running out...'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - 'No flavor text
+
+    for this card
+
+    yet.'
+  - "Lugirit is easy to\ntip off. It\u2019s like he\nis always angry\nat everything.
+    No\nwonder he never\ngot along with\nhis brother."
+  - 'Zenlads are from
+
+    a far away planet.
+
+    This guy was just
+
+    visiting our planet.
+
+    It decided to stay.'
+  - 'No, he is not
+
+    a spider. Please
+
+    learn to count.'
+  - 'Did you know
+
+    that Aluga is
+
+    giving fighting
+
+    lessons?
+
+    We neither.'
   - 'Buhar protects
 
     small towns from
 
-    sad sad, stormy,
+    sad rain clouds
 
-    scary and dark
+    with the help of
 
-    rain clouds.'
-  - 'No flavor text
+    Sword of Rainbow.'
+  - 'Bobs have such
 
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
+    a rich history.'
   inital:
   - {x: 3, y: 5, z: 2, w: 2}
   - {x: 2, y: 4, z: 3, w: 2}
