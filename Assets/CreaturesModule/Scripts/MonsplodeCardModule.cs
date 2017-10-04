@@ -130,7 +130,8 @@ public class MonsplodeCardModule : MonoBehaviour
 			PrintDebug("Print version letter " + c.printChar + "'s alphabetical position is equal to print version numeral. Card is fake with 0 value.");
 			return 0f;
 		}
-		PrintDebug("First 2 characters of Serial: " + state + " | Monsplode: " + CD.names[c.monsplode] + " | Using initial value: " + value);
+		string[] formalStateNames = new string[4] { "##", "XX", "#X", "X#" };
+		PrintDebug("First 2 characters of Serial: " + formalStateNames[(int)state] + " | Monsplode: " + CD.names[c.monsplode].Replace('\n',' ') + " | Using initial value: " + value);
 		// Indicator part
 		int on=0, off=0;
 		foreach (string ind in Info.GetOnIndicators())
@@ -182,7 +183,7 @@ public class MonsplodeCardModule : MonoBehaviour
 				bent++;
 		Card c = new Card(Random.Range(0,CD.size) , Random.Range(0,4), Random.Range(1,10) , (char)Random.Range('A','I'+1),Random.value<0.21,bent); // SHOuLD RARE CARDS BE RARE? Bent corners and holo
 		string[] mulNames = new string[]{"Common","Uncommon","Rare","Very Rare"};
-		PrintDebug("Monsplode: "+CD.names[c.monsplode]+" | Rarity: " + mulNames[c.rarity] +"\nPrint Version: " + c.printChar+c.printDigit+ " | Holographic: "+c.isHolographic+ " | Bent Corners: " + c.bentCorners);
+		PrintDebug("Monsplode: "+CD.names[c.monsplode].Replace('\n',' ')+" | Rarity: " + mulNames[c.rarity] +"\nPrint Version: " + c.printChar+c.printDigit+ " | Holographic: "+c.isHolographic+ " | Bent Corners: " + c.bentCorners);
 		c.value = CalculateCardValue(c);
 		return c;
 	}
@@ -289,11 +290,12 @@ public class MonsplodeCardModule : MonoBehaviour
 			PrintDebug("Offer: " + i + " Value: " + offers[i].value);
 		}
 	}*/
+	/*
 	string CardToText(Card c)
 	{
-		return "Monsplode: " + CD.names[c.monsplode] + "\nRarity: " + raritySymbols[c.rarity] + "\nPrint Version: " + c.printChar + c.printDigit + "\nHolographic: " + c.isHolographic + "\nBent Corners: " + c.bentCorners;
+		return "Monsplode: " + CD.names[c.monsplode].Replace('\n',' ') + "\nRarity: " + raritySymbols[c.rarity] + "\nPrint Version: " + c.printChar + c.printDigit + "\nHolographic: " + c.isHolographic + "\nBent Corners: " + c.bentCorners;
 	}
-
+	*/
 	void HandleFlapVisuals(bool[] which,SpriteRenderer[] normal,SpriteRenderer[] bent, SpriteRenderer[] flap)
 	{
 		for (int i = 0; i < 4; i++)

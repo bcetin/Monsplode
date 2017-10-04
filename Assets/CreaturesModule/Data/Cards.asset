@@ -78,54 +78,50 @@ MonoBehaviour:
 
     The Ancestor'
   flavorText:
+  - 'Lighter than air
+
+    Has a nice flair
+
+    Extremely fair
+
+    To ones who share
+
+    Love everywhere'
   - 'No flavor text
 
     for this card
 
     yet.'
-  - 'No flavor text
+  - Queen of Fluff
+  - 'Don''t let him
 
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
+    explode...'
   - '"Hi. I''m Bob."
 
     -Bob'
+  - 'Melts your heart.
+
+    Ba-dum tss.'
+  - 'Meow. Purr. Purr.
+
+    Meow. Growl.
+
+    Hisssssss. Claw.
+
+    Clawclawclaw.'
   - 'No flavor text
 
     for this card
 
     yet.'
-  - 'No flavor text
+  - 'Something,
 
-    for this card
+    something...
 
-    yet.'
-  - 'No flavor text
+    Spider thing?'
+  - 'So cute it
 
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
-  - 'No flavor text
-
-    for this card
-
-    yet.'
+    hurts to hurt.'
   - 'Mitochondria is
 
     Pouse of the cell.'
@@ -141,16 +137,20 @@ MonoBehaviour:
     really got along
 
     with his brother.'
-  - 'No flavor text
+  - 'A friendly jellyfish,
 
-    for this card
+    who planted a
 
-    yet.'
-  - 'No flavor text
+    daisy on its head.
 
-    for this card
+    Has a twin.'
+  - 'A friendly jellyfish,
 
-    yet.'
+    who planted a
+
+    violet on its head.
+
+    Has a twin.'
   - 'No flavor text
 
     for this card
@@ -168,26 +168,34 @@ MonoBehaviour:
     for this card
 
     yet.'
-  - 'No flavor text
+  - 'Fiery Soul is his
 
-    for this card
+    favourite move.
 
-    yet.'
-  - 'No flavor text
+    Nobody knows
 
-    for this card
+    why.'
+  - 'He has mastered
 
-    yet.'
-  - 'No flavor text
+    the marinal arts
 
-    for this card
+    of Sushi-tsu.'
+  - 'A mountain
 
-    yet.'
-  - 'No flavor text
+    that can walk,
 
-    for this card
+    A tortoise
 
-    yet.'
+    made of rock.'
+  - 'Crawls to its prey
+
+    in extreme silence.
+
+    First, paralyzes,
+
+    then consumes it.
+
+    Also, in silence.'
   - "Lugirit is easy to\ntip off. It\u2019s like he\nis always angry\nat everything.
     No\nwonder he never\ngot along with\nhis brother."
   - 'Zenlads are from

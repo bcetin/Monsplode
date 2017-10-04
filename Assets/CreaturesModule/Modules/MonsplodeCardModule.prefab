@@ -3601,13 +3601,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012830978842}
-  m_Text: 'Fiery Soul is his
-
-    favourite move.
-
-    Nobody knows
-
-    why.'
+  m_Text: Flavor text.
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
