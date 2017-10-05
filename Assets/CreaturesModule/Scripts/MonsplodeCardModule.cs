@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using KMHelper;
+using System.Linq;
 
 public class MonsplodeCardModule : MonoBehaviour
 {
@@ -8,33 +9,33 @@ public class MonsplodeCardModule : MonoBehaviour
 	public KMBombModule Module;
 	public KMAudio Audio;
 	public CardsDataObject CD;
-	public KMSelectable next,prev,keep,trade;
-	public TextMesh deckTM,offerTM,deckVersion,offerVersion,deckRarity,offerRarity,deckFlavor,offerFlavor;
-	public SpriteRenderer deckSR, offerSR,deckBack,offerBack;
+	public KMSelectable next, prev, keep, trade;
+	public TextMesh deckTM, offerTM, deckVersion, offerVersion, deckRarity, offerRarity, deckFlavor, offerFlavor;
+	public SpriteRenderer deckSR, offerSR, deckBack, offerBack;
 	public int deckSize, offerCount;
-	int lowestCardInDeck=0;
+	int lowestCardInDeck = 0;
 	bool isActivated = false;
 	private static int _moduleIdCounter = 1;
 	private int _moduleId;
 	public char[] raritySymbols;
 	public Card[] deck;
 	public Card offer;
-	public SpriteRenderer[] DeckFlaps,DeckNormals,DeckBents,OfferFlaps,OfferNormals,OfferBents,StageCount;
-	public int currentOffer=0,correctOffer=0, currentDeck=0;
-	public GameObject deckGlitters,offerGlitters,deckFrontFace,offerFrontFace;
+	public SpriteRenderer[] DeckFlaps, DeckNormals, DeckBents, OfferFlaps, OfferNormals, OfferBents, StageCount;
+	public int currentOffer = 0, correctOffer = 0, currentDeck = 0;
+	public GameObject deckGlitters, offerGlitters, deckFrontFace, offerFrontFace;
 	public enum SerialStates
 	{
-		numbers,letters,numlet,letnum
+		numbers, letters, numlet, letnum
 	};
 	SerialStates state;
 	private void PrintDebug(string str)
 	{
-		Debug.LogFormat("[MonsplodeCards #{0}] "+str, _moduleId);
+		Debug.LogFormat("[MonsplodeCards #{0}] " + str, _moduleId);
 	}
 	void Start()
 	{
 		_moduleId = _moduleIdCounter++;
-		
+
 	}
 	private void Awake()
 	{
@@ -118,12 +119,12 @@ public class MonsplodeCardModule : MonoBehaviour
 			if (i < correctOffer)
 				StageCount[i].color = Color.green;
 			else
-				StageCount[i].color = new Color(1,1,1,0.4f);
+				StageCount[i].color = new Color(1, 1, 1, 0.4f);
 	}
 	float CalculateCardValue(Card c)
 	{
 		//Debug.Log(c.monsplode);
-		int value=(int)CD.inital[c.monsplode][(int)state];
+		int value = (int) CD.inital[c.monsplode][(int) state];
 		//Debug.Log("THISSS"+ Vector3.zero[0]);
 		if (c.printChar - 'A' + 1 == c.printDigit)
 		{
@@ -131,9 +132,9 @@ public class MonsplodeCardModule : MonoBehaviour
 			return 0f;
 		}
 		string[] formalStateNames = new string[4] { "##", "XX", "#X", "X#" };
-		PrintDebug("First 2 characters of Serial: " + formalStateNames[(int)state] + " | Monsplode: " + CD.names[c.monsplode].Replace('\n',' ') + " | Using initial value: " + value);
+		PrintDebug("First 2 characters of Serial: " + formalStateNames[(int) state] + " | Monsplode: " + CD.names[c.monsplode].Replace('\n', ' ') + " | Using initial value: " + value);
 		// Indicator part
-		int on=0, off=0;
+		int on = 0, off = 0;
 		foreach (string ind in Info.GetOnIndicators())
 			if (ind.Contains(c.printChar.ToString()))
 				on++;
@@ -157,11 +158,11 @@ public class MonsplodeCardModule : MonoBehaviour
 		}
 		else
 		{
-			value+=2;
+			value += 2;
 			PrintDebug("Print version numeral is equal to battery count. Add 2.\nCurrent value: " + value);
 		}
 		// Multipler part
-		float[] mulLookup=new float[]{1f,1.25f,1.5f,1.75f};
+		float[] mulLookup = new float[] { 1f, 1.25f, 1.5f, 1.75f };
 		float mul = mulLookup[c.rarity];
 		PrintDebug("Base rarity multipler from the symbol: " + mul);
 		if (c.isHolographic)
@@ -169,21 +170,21 @@ public class MonsplodeCardModule : MonoBehaviour
 			mul += 0.5f;
 			PrintDebug("Card is holographic. Add 0.5. Current multipler: " + mul);
 		}
-		mul -= 0.25f *c.bentCorners;
+		mul -= 0.25f * c.bentCorners;
 		PrintDebug("There are " + c.bentCorners + " bent corners. Subtract " + c.bentCorners * 0.25f + ". Current multipler: " + mul);
 		PrintDebug("Final value is: " + value + " X " + mul + " = " + value * mul);
-		return value*mul;
+		return value * mul;
 	}
 
 	Card MakeCard()
 	{
 		int bent = 0;
 		for (int i = 0; i < 4; i++)
-			if(Random.value < 0.20)
+			if (Random.value < 0.20)
 				bent++;
-		Card c = new Card(Random.Range(0,CD.size) , Random.Range(0,4), Random.Range(1,10) , (char)Random.Range('A','I'+1),Random.value<0.21,bent); // SHOuLD RARE CARDS BE RARE? Bent corners and holo
-		string[] mulNames = new string[]{"Common","Uncommon","Rare","Very Rare"};
-		PrintDebug("Monsplode: "+CD.names[c.monsplode].Replace('\n',' ')+" | Rarity: " + mulNames[c.rarity] +"\nPrint Version: " + c.printChar+c.printDigit+ " | Holographic: "+c.isHolographic+ " | Bent Corners: " + c.bentCorners);
+		Card c = new Card(Random.Range(0, CD.size), Random.Range(0, 4), Random.Range(1, 10), (char) Random.Range('A', 'I' + 1), Random.value < 0.21, bent); // SHOuLD RARE CARDS BE RARE? Bent corners and holo
+		string[] mulNames = new string[] { "Common", "Uncommon", "Rare", "Very Rare" };
+		PrintDebug("Monsplode: " + CD.names[c.monsplode].Replace('\n', ' ') + " | Rarity: " + mulNames[c.rarity] + "\nPrint Version: " + c.printChar + c.printDigit + " | Holographic: " + c.isHolographic + " | Bent Corners: " + c.bentCorners);
 		c.value = CalculateCardValue(c);
 		return c;
 	}
@@ -191,7 +192,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	{
 		float score = 99;
 		for (int i = 0; i < deckSize; i++)
-			if (score >deck[i].value)
+			if (score > deck[i].value)
 			{
 				score = deck[i].value;
 				lowestCardInDeck = i;
@@ -202,7 +203,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		if (correctOffer == offerCount || !isActivated) // This means module is passed
 			return;
 
-		currentDeck = Mathf.Min(currentDeck + 1,deckSize-1);
+		currentDeck = Mathf.Min(currentDeck + 1, deckSize - 1);
 		UpdateCardVisuals();
 	}
 	void PrevCardPress()
@@ -210,7 +211,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		if (correctOffer == offerCount || !isActivated) // This means module is passed
 			return;
 
-		currentDeck = Mathf.Max(currentDeck - 1,0);
+		currentDeck = Mathf.Max(currentDeck - 1, 0);
 		UpdateCardVisuals();
 	}
 	void KeepPress()
@@ -220,7 +221,7 @@ public class MonsplodeCardModule : MonoBehaviour
 
 		if (deck[lowestCardInDeck].value < offer.value)
 		{
-			PrintDebug("Wrong! Deck card #" + (lowestCardInDeck+1) +" had lower value than the offer.");
+			PrintDebug("Wrong! Deck card #" + (lowestCardInDeck + 1) + " had lower value than the offer.");
 			Module.HandleStrike();
 		}
 		else
@@ -249,15 +250,15 @@ public class MonsplodeCardModule : MonoBehaviour
 
 		if (deck[lowestCardInDeck].value > offer.value || deck[currentDeck].value > deck[lowestCardInDeck].value)
 		{
-			if(deck[lowestCardInDeck].value > offer.value)
-				PrintDebug("Wrong! All of your cards had higher value than the offer. Offered card is now deck card #" + (currentDeck+1) + ".");
+			if (deck[lowestCardInDeck].value > offer.value)
+				PrintDebug("Wrong! All of your cards had higher value than the offer. Offered card is now deck card #" + (currentDeck + 1) + ".");
 			else
-				PrintDebug("Wrong! Deck card #" + (lowestCardInDeck + 1) + " had lower value than the deck card #"+ (currentDeck + 1) +". Offered card is now deck card #" + (currentDeck + 1) + ".");
+				PrintDebug("Wrong! Deck card #" + (lowestCardInDeck + 1) + " had lower value than the deck card #" + (currentDeck + 1) + ". Offered card is now deck card #" + (currentDeck + 1) + ".");
 			Module.HandleStrike();
 		}
 		else
 		{
-			PrintDebug("You did the right trade! Offered card is now deck card #" + (currentDeck+1) + ".");
+			PrintDebug("You did the right trade! Offered card is now deck card #" + (currentDeck + 1) + ".");
 			correctOffer++;
 		}
 		currentOffer++;
@@ -296,7 +297,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		return "Monsplode: " + CD.names[c.monsplode].Replace('\n',' ') + "\nRarity: " + raritySymbols[c.rarity] + "\nPrint Version: " + c.printChar + c.printDigit + "\nHolographic: " + c.isHolographic + "\nBent Corners: " + c.bentCorners;
 	}
 	*/
-	void HandleFlapVisuals(bool[] which,SpriteRenderer[] normal,SpriteRenderer[] bent, SpriteRenderer[] flap)
+	void HandleFlapVisuals(bool[] which, SpriteRenderer[] normal, SpriteRenderer[] bent, SpriteRenderer[] flap)
 	{
 		for (int i = 0; i < 4; i++)
 			if (which[i])
@@ -310,12 +311,12 @@ public class MonsplodeCardModule : MonoBehaviour
 				bent[i].enabled = flap[i].enabled = false;
 			}
 	}
-	bool[] GenerateFlapState(int seed,int count) // MAke flaps random for each card but make it stable per card.
+	bool[] GenerateFlapState(int seed, int count) // MAke flaps random for each card but make it stable per card.
 	{
 		bool[] arr = new bool[4];
-		for(int i=0; i<4;i++)
-			arr[i]=false;
-		int add=seed%4,start=seed%5;
+		for (int i = 0; i < 4; i++)
+			arr[i] = false;
+		int add = seed % 4, start = seed % 5;
 		if (add == 0) add = -1;
 		if (add == 2) add = -3;
 		if (start == 4) start = 2;
@@ -328,7 +329,7 @@ public class MonsplodeCardModule : MonoBehaviour
 	}
 	void UpdateCardVisuals()
 	{
-		HandleFlapVisuals(GenerateFlapState(deck[currentDeck].printDigit + deck[currentDeck].printChar, deck[currentDeck].bentCorners),DeckNormals,DeckBents,DeckFlaps); // Bent Corners
+		HandleFlapVisuals(GenerateFlapState(deck[currentDeck].printDigit + deck[currentDeck].printChar, deck[currentDeck].bentCorners), DeckNormals, DeckBents, DeckFlaps); // Bent Corners
 		HandleFlapVisuals(GenerateFlapState(offer.printDigit + offer.printChar, offer.bentCorners), OfferNormals, OfferBents, OfferFlaps);
 
 		deckRarity.text = raritySymbols[deck[currentDeck].rarity] + ""; // Rarity Symbol
@@ -355,12 +356,12 @@ public class MonsplodeCardModule : MonoBehaviour
 	{
 		PrintDebug("Generating the offered card #" + (currentOffer + 1));
 		offer = MakeCard();
-		PrintDebug("Value of offered card #" + (currentOffer + 1) + ": "+offer.value);
+		PrintDebug("Value of offered card #" + (currentOffer + 1) + ": " + offer.value);
 	}
 	void Init()
 	{
 		// Calculate serial state for monplode initial variation
-		char first= Info.GetSerialNumber()[0], second= Info.GetSerialNumber()[1];
+		char first = Info.GetSerialNumber()[0], second = Info.GetSerialNumber()[1];
 		if ('A' <= first && first <= 'Z')
 		{
 			if ('A' <= second && second <= 'Z')
@@ -379,7 +380,7 @@ public class MonsplodeCardModule : MonoBehaviour
 		deck = new Card[deckSize];
 		for (int i = 0; i < deckSize; i++)
 		{
-			PrintDebug("Generating the deck card #" + (i +1));
+			PrintDebug("Generating the deck card #" + (i + 1));
 			deck[i] = MakeCard();
 			PrintDebug("Value of deck card #" + (i + 1) + ": " + deck[i].value);
 		}
@@ -387,7 +388,45 @@ public class MonsplodeCardModule : MonoBehaviour
 		ResetOffer();
 
 		//PrintOutDeck();
-		
+
 		CalculateLowestCardInDeck();
+	}
+
+	public string TwitchHelpMessage = "Cycle through the cards using !{0} cycle. To keep the current card use !{0} keep. To trade the current card !{0} trade.";
+	IEnumerator ProcessTwitchCommand(string command)
+	{
+		string[] split = command.ToLowerInvariant().Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+		string last = split.Last();
+
+		if (split[0] == "cycle" && split.Length == 1)
+		{
+			yield return null;
+
+			for (int i = 0; i < 2; i++)
+			{
+				next.OnInteract();
+				yield return new WaitForSeconds(7);
+			}
+
+			for (int i = 0; i < 2; i++)
+			{
+				prev.OnInteract();
+				yield return new WaitForSeconds(0.1f);
+			}
+		}
+		else if ((last == "trade" || last == "t") && (split.Length == 1 || (split.Length == 2 && split[0] == "press")))
+		{
+			yield return null;
+
+			keep.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
+		else if ((last == "keep" || last == "k") && (split.Length == 1 || (split.Length == 2 && split[0] == "press")))
+		{
+			yield return null;
+
+			trade.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
 }
