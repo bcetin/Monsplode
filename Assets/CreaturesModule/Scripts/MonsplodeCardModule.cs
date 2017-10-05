@@ -390,4 +390,67 @@ public class MonsplodeCardModule : MonoBehaviour
 		
 		CalculateLowestCardInDeck();
 	}
+
+    private string TwitchHelpMessage = "Go to the next card with !{0} next. Go to the previous card with !{0} prev. Keep your cards with !{0} keep. Trade selected card with !{0} trade. View all cards with !{0} cycle";
+    IEnumerator ProcessTwitchCommand(string inputCommand)
+    {
+        inputCommand = inputCommand.ToLowerInvariant();
+        switch (inputCommand)
+        {
+            case "l":           case "press l":
+            case "left":        case "press left":
+            case "p":           case "press p":
+            case "prev":        case "press prev":
+            case "previous":    case "press previous":
+                yield return null;
+                PrevCardPress();
+                yield return new WaitForSeconds(0.1f);
+                break;
+
+            case "r":           case "press r":
+            case "right":       case "press right":
+            case "n":           case "press n":
+            case "next":        case "press next":
+                yield return null;
+                NextCardPress();
+                yield return new WaitForSeconds(0.1f);
+                break;
+
+            case "keep":        case "press keep":
+                yield return null;
+                KeepPress();
+                yield return new WaitForSeconds(0.1f);
+                break;
+
+            case "trade":       case "press trade":
+                yield return null;
+                TradePress();
+                yield return new WaitForSeconds(0.1f);
+                break;
+
+            case "cycle":
+                yield return null;
+                int deck = currentDeck;
+                while (currentDeck != 0)
+                {
+                    PrevCardPress();
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(3f);
+                NextCardPress();
+                yield return new WaitForSeconds(3f);
+                NextCardPress();
+                yield return new WaitForSeconds(3f);
+                while (currentDeck != deck)
+                {
+                    PrevCardPress();
+                    yield return new WaitForSeconds(0.1f);
+                }
+                break;
+
+            default:
+                yield break;
+        }
+    }
+
 }
