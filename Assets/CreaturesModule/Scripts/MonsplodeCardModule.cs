@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using KMHelper;
+using Random = UnityEngine.Random;
 
 public class MonsplodeCardModule : MonoBehaviour
 {
@@ -391,65 +393,53 @@ public class MonsplodeCardModule : MonoBehaviour
 		CalculateLowestCardInDeck();
 	}
 
-    private string TwitchHelpMessage = "Go to the next card with !{0} next. Go to the previous card with !{0} prev. Keep your cards with !{0} keep. Trade selected card with !{0} trade. View all cards with !{0} cycle";
+    private string TwitchHelpMessage = "View all cards with !{0} cycle. Select the card to trade with !{0} left or !{0} right. Trade selected card with !{0} trade. Keep your cards with !{0} keep.";
     IEnumerator ProcessTwitchCommand(string inputCommand)
     {
-        inputCommand = inputCommand.ToLowerInvariant();
-        switch (inputCommand)
+        string[] split = inputCommand.ToLowerInvariant().Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+
+        if (split.Length == 1 && split[0] == "cycle")
         {
-            case "l":           case "press l":
-            case "left":        case "press left":
-            case "p":           case "press p":
-            case "prev":        case "press prev":
-            case "previous":    case "press previous":
-                yield return null;
+            yield return null;
+            int deck = currentDeck;
+            while (currentDeck != 0)
+            {
                 PrevCardPress();
                 yield return new WaitForSeconds(0.1f);
-                break;
-
-            case "r":           case "press r":
-            case "right":       case "press right":
-            case "n":           case "press n":
-            case "next":        case "press next":
-                yield return null;
-                NextCardPress();
-                yield return new WaitForSeconds(0.1f);
-                break;
-
-            case "keep":        case "press keep":
-                yield return null;
-                KeepPress();
-                yield return new WaitForSeconds(0.1f);
-                break;
-
-            case "trade":       case "press trade":
-                yield return null;
-                TradePress();
-                yield return new WaitForSeconds(0.1f);
-                break;
-
-            case "cycle":
-                yield return null;
-                int deck = currentDeck;
-                while (currentDeck != 0)
+            }
+            for (int i = 0; i < deckSize; i++)
+            {
+                for (int j = 0; j < 70; j++)
                 {
-                    PrevCardPress();
+                    yield return "trycancel";
                     yield return new WaitForSeconds(0.1f);
                 }
-                yield return new WaitForSeconds(3f);
                 NextCardPress();
-                yield return new WaitForSeconds(3f);
-                NextCardPress();
-                yield return new WaitForSeconds(3f);
-                while (currentDeck != deck)
-                {
-                    PrevCardPress();
-                    yield return new WaitForSeconds(0.1f);
-                }
-                break;
+            }
+            while (currentDeck != deck)
+            {
+                PrevCardPress();
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield break;
+        }
 
-            default:
-                yield break;
+        if (split.Length == 1 || (split.Length == 2 && split[0] == "press"))
+        {
+            KMSelectable button;
+            switch (split.Length == 1 ? split[0] : split[1])
+            {
+                case "l":   case "left":   case "p":  case "prev":  case "previous": button = prev; break;
+                case "r":   case "right":  case "n":  case "next":                   button = next; break;
+
+                case "k":  case "keep":  button = keep; break;
+                case "t":  case "trade": button = trade; break;
+
+                default: yield break;
+            }
+            yield return null;
+            button.OnInteract();
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
