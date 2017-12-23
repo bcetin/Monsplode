@@ -1844,6 +1844,7 @@ MonoBehaviour:
   - {fileID: 455164}
   - {fileID: 442426}
   - {fileID: 485358}
+  missing: {fileID: 21300000, guid: 8d520e33f25e1504bbfd89df4f08fec0, type: 3}
   moveDelta: 0.001
 --- !u!114 &11419374
 MonoBehaviour:
@@ -2105,7 +2106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: afeb87d0e86ac314599e9ec1fbb1146e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6496304867d67544696cd26976cb7181, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2138,7 +2139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000010310833124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2177,7 +2178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000010691540122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2203,7 +2204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000012097360144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2229,7 +2230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000012907180406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2255,7 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000013263287414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2268,7 +2269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000013299704226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2294,7 +2295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114000013808622430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2307,4 +2308,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Mobile/DiffuseTint

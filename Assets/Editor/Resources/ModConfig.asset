@@ -35,6 +35,6 @@ MonoBehaviour:
     guys B) )\r\n\r\nModule types are \"[b]monsplodeFight[/b]\", \"[b]monsplodeWho[/b]\"
     and \"[b]monsplodeCards[/b]\" I am pretty ok if you want to use them on your mod/mission
     pack.\r\n\r\n"
-  version: 4.0.0
+  version: 4.1.0
   outputFolder: MonsplodeMod
   previewImage: {fileID: 2800000, guid: 9832dd9294c5c75428e9cdc476b9f061, type: 3}

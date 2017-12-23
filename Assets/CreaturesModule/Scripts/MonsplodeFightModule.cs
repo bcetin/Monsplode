@@ -17,6 +17,7 @@ public class MonsplodeFightModule : MonoBehaviour
     public KMSelectable[] buttons;
     public Vector3[] AttackMul;
     public Transform[] DP, UP;
+	public Sprite missing;
     float[][] mulLookup;
     bool isActivated = false;
 
@@ -53,14 +54,36 @@ public class MonsplodeFightModule : MonoBehaviour
     void PickCreature()
     {
         crID = Random.Range(0, CD.size);
-
+		if (Random.Range(0, 92) == 0) //Missing No 1/92
+		{
+			crID = -1;
+			screenSR.sprite = missing;
+			foreach (Renderer renderer in gameObject.GetComponentsInChildren<Renderer>())
+			{
+				if (renderer.gameObject.GetComponent<TextMesh>()) continue;
+				if(renderer.gameObject.GetComponent<SpriteRenderer>()) continue;
+				Material mat = renderer.material;
+				mat.mainTextureOffset = new Vector2(Random.Range(-1f, 1f)/2, Random.Range(-1f, 1f)/2);
+				mat.color = new Color(Random.value/2, Random.value/2, Random.value/2);
+			}
+			return;
+		}
         screenSR.sprite = CD.sprites[crID];
     }
 
     void PickMoves()
     {
         moveIDs = new int[4];
-        List<int> movePool = new List<int>();
+		if (crID == -1) //Missing No
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				buttons[i].GetComponentInChildren<TextMesh>().text = "Defuse";
+				moveIDs[i] = -1;
+			}
+			return;
+		}
+		List<int> movePool = new List<int>();
 
         for (int i = 0; i < MD.size; i++)
             movePool.Add(i);
@@ -108,7 +131,8 @@ public class MonsplodeFightModule : MonoBehaviour
 
     float CalcDmg(int move, int crea, int buttonLocation)
     {
-        //DAMAGE CHANGING MOVES
+		//DAMAGE CHANGING MOVES
+		if (move == -1) return 0;
         float DAMAGE = MD.damage[move];
         int TYPE = CD.type[crea];
 
@@ -455,6 +479,13 @@ public class MonsplodeFightModule : MonoBehaviour
             Debug.LogFormat("[MonsplodeFight #{0}] Pressed button before module has been activated!", _moduleId);
             return;
         }
+		if(moveIDs[buttonID]==-1)
+		{
+			Debug.LogFormat("[MonsplodeFight #{0}] Pressed Defuse!", _moduleId);
+			GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, buttons[buttonID].transform);
+			Correct();
+			return;
+		}
         Debug.LogFormat("[MonsplodeFight #{0}] Opponent: {1}, using Move {2}: {3}", _moduleId, CD.names[crID], buttonID, MD.names[moveIDs[buttonID]].Replace('\n', ' '));
 
         if (MD.specials[moveIDs[buttonID]] == "BOOM" && CD.specials[crID] != "DOC")
