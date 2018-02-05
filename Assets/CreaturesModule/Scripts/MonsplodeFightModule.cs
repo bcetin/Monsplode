@@ -18,8 +18,10 @@ public class MonsplodeFightModule : MonoBehaviour
     public Vector3[] AttackMul;
     public Transform[] DP, UP;
 	public Sprite missing;
+	public KMModSettings modSet;
     float[][] mulLookup;
     bool isActivated = false;
+	public float missingNoChance = 1 / 92f;
 
     private static int _moduleIdCounter = 1;
     private int _moduleId;
@@ -33,7 +35,13 @@ public class MonsplodeFightModule : MonoBehaviour
     void Start()
     {
         _moduleId = _moduleIdCounter++;
-        Init();
+		string[] setWords = modSet.Settings.Split();
+		if (setWords != null)
+		{
+			float ey = float.Parse(setWords[0]);
+			missingNoChance = Mathf.Clamp(ey,0f,1f);
+		}
+		Init();
         Module.OnActivate += ActivateModule;
         Info.OnBombExploded += BombExploded;
     }
@@ -54,7 +62,7 @@ public class MonsplodeFightModule : MonoBehaviour
     void PickCreature()
     {
         crID = Random.Range(0, CD.size);
-		if (Random.Range(0, 92) == 0) //Missing No 1/92
+		if (Random.value < missingNoChance) //Missing No 1/92
 		{
 			crID = -1;
 			screenSR.sprite = missing;
@@ -604,7 +612,8 @@ public class MonsplodeFightModule : MonoBehaviour
     IEnumerator ProcessTwitchCommand(string command)
     {
         int btn = -1;
-        command = command.ToLowerInvariant().Trim();
+		
+		command = command.ToLowerInvariant().Trim();
 
         //position based
         if (Regex.IsMatch(command, @"^press [a-zA-Z]+$"))
@@ -620,15 +629,22 @@ public class MonsplodeFightModule : MonoBehaviour
             }
         }
         else
-        { 
-            //direct name with "use"
-            if (Regex.IsMatch(command, @"^use [a-z ]+$"))
+        {
+			
+			//direct name with "use"
+			if (Regex.IsMatch(command, @"^use [a-z ]+$"))
             {
                 command = command.Substring(4).Trim();
             }
-
-            //direct name without "use"
-            if (command == MD.names[moveIDs[0]].Replace('\n', ' ').ToLowerInvariant()) btn = 0;
+			//direct name without "use"
+			// MissingNo Case
+			if (crID == -1)
+			{
+				if(command == "defuse")
+					OnPress(0);
+				yield break;
+			}
+			if (command == MD.names[moveIDs[0]].Replace('\n', ' ').ToLowerInvariant()) btn = 0;
             else if (command == MD.names[moveIDs[1]].Replace('\n', ' ').ToLowerInvariant()) btn = 1;
             else if (command == MD.names[moveIDs[2]].Replace('\n', ' ').ToLowerInvariant()) btn = 2;
             else if (command == MD.names[moveIDs[3]].Replace('\n', ' ').ToLowerInvariant()) btn = 3;
