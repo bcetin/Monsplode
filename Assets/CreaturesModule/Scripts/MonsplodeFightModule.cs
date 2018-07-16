@@ -642,8 +642,9 @@ public class MonsplodeFightModule : MonoBehaviour
 			// MissingNo Case
 			if (crID == -1)
 			{
-				if(command == "defuse")
-					OnPress(0);
+				yield return null;	//Do the right thing
+				if (command == "defuse")
+					buttons[0].OnInteract();
 				yield break;
 			}
 			if (command == MD.names[moveIDs[0]].Replace('\n', ' ').ToLowerInvariant()) btn = 0;
