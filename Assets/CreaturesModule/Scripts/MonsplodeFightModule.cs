@@ -661,6 +661,7 @@ public class MonsplodeFightModule : MonoBehaviour
 	        if (CD.specials[crID] == "LOWEST")
 	        {
 		        Debug.LogFormat("[MonsplodeFight #{0}] How could you use BOOM against Cutie Pie?", _moduleId);
+				yield return new string[] { "detonate", "What did cutie pie ever do to you to deserve being exploded?" };
 	        }
 	        else
 	        {
