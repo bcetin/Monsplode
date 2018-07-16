@@ -658,13 +658,19 @@ public class MonsplodeFightModule : MonoBehaviour
         yield return null;
         if (MD.specials[moveIDs[btn]] == "BOOM" && CD.specials[crID] != "DOC")
         {
-            yield return "multiple strikes";
-            OnPress(btn);
-            yield return string.Format("award strikes {0}",strikesToExplosion);
-        }
-        else
-        {
-            OnPress(btn);
-        }
+	        if (CD.specials[crID] == "LOWEST")
+	        {
+		        Debug.LogFormat("[MonsplodeFight #{0}] How could you use BOOM against Cutie Pie?", _moduleId);
+	        }
+	        else
+	        {
+		        yield return new string[] { "detonate" };
+	        }
+	        Debug.LogFormat("[MonsplodeFight #{0}] Pressed BOOM!", _moduleId);
+		}
+	    else
+	    {
+		    buttons[btn].OnInteract();
+	    }
     }
 }
