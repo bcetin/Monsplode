@@ -609,7 +609,9 @@ public class MonsplodeFightModule : MonoBehaviour
         isActivated = true;
     }
 
-    IEnumerator ProcessTwitchCommand(string command)
+	private string TwitchHelpMessage = "Use a move with !{0} use splash.";
+
+	IEnumerator ProcessTwitchCommand(string command)
     {
         int btn = -1;
 		
