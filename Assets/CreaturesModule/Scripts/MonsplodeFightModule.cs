@@ -674,4 +674,39 @@ public class MonsplodeFightModule : MonoBehaviour
 		    buttons[btn].OnInteract();
 	    }
     }
+
+	private IEnumerator TwitchHandleForcedSolve()
+	{
+		yield return null;
+
+		if (crID == -1)
+		{
+			buttons[0].OnInteract();
+			yield break;
+		}
+
+		float mxdmg = -100;
+		List<int> winners = new List<int>();
+		for (int i = 0; i < 4; i++)
+		{
+			if (MD.specials[moveIDs[i]] == "BOOM" && CD.specials[crID] != "DOC") continue;
+			//buttons [i].GetComponentInChildren<TextMesh>().text=MD.names[moveIDs[i]];
+			float dmg = CalcDmg(moveIDs[i], crID, i);
+
+			if (CD.specials[crID] == "LOWEST")
+			{
+				dmg = -dmg;
+			}
+			if (dmg > mxdmg)
+			{
+				mxdmg = dmg;
+				winners.Clear();
+				winners.Add(i);
+			}
+			else if (dmg == mxdmg)
+				winners.Add(i);
+		}
+		
+		buttons[winners[0]].OnInteract();
+	}
 }
