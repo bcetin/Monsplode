@@ -609,7 +609,9 @@ public class MonsplodeFightModule : MonoBehaviour
         isActivated = true;
     }
 
-    IEnumerator ProcessTwitchCommand(string command)
+	private string TwitchHelpMessage = "Use a move with !{0} use splash.";
+
+	IEnumerator ProcessTwitchCommand(string command)
     {
         int btn = -1;
 		
@@ -640,8 +642,9 @@ public class MonsplodeFightModule : MonoBehaviour
 			// MissingNo Case
 			if (crID == -1)
 			{
-				if(command == "defuse")
-					OnPress(0);
+				yield return null;	//Do the right thing
+				if (command == "defuse")
+					buttons[0].OnInteract();
 				yield break;
 			}
 			if (command == MD.names[moveIDs[0]].Replace('\n', ' ').ToLowerInvariant()) btn = 0;
@@ -655,13 +658,55 @@ public class MonsplodeFightModule : MonoBehaviour
         yield return null;
         if (MD.specials[moveIDs[btn]] == "BOOM" && CD.specials[crID] != "DOC")
         {
-            yield return "multiple strikes";
-            OnPress(btn);
-            yield return string.Format("award strikes {0}",strikesToExplosion);
-        }
-        else
-        {
-            OnPress(btn);
-        }
+	        if (CD.specials[crID] == "LOWEST")
+	        {
+		        Debug.LogFormat("[MonsplodeFight #{0}] How could you use BOOM against Cutie Pie?", _moduleId);
+				yield return new string[] { "detonate", "What did cutie pie ever do to you to deserve being exploded?" };
+	        }
+	        else
+	        {
+		        yield return new string[] { "detonate" };
+	        }
+	        Debug.LogFormat("[MonsplodeFight #{0}] Pressed BOOM!", _moduleId);
+		}
+	    else
+	    {
+		    buttons[btn].OnInteract();
+	    }
     }
+
+	private IEnumerator TwitchHandleForcedSolve()
+	{
+		yield return null;
+
+		if (crID == -1)
+		{
+			buttons[0].OnInteract();
+			yield break;
+		}
+
+		float mxdmg = -100;
+		List<int> winners = new List<int>();
+		for (int i = 0; i < 4; i++)
+		{
+			if (MD.specials[moveIDs[i]] == "BOOM" && CD.specials[crID] != "DOC") continue;
+			//buttons [i].GetComponentInChildren<TextMesh>().text=MD.names[moveIDs[i]];
+			float dmg = CalcDmg(moveIDs[i], crID, i);
+
+			if (CD.specials[crID] == "LOWEST")
+			{
+				dmg = -dmg;
+			}
+			if (dmg > mxdmg)
+			{
+				mxdmg = dmg;
+				winners.Clear();
+				winners.Add(i);
+			}
+			else if (dmg == mxdmg)
+				winners.Add(i);
+		}
+		
+		buttons[winners[0]].OnInteract();
+	}
 }

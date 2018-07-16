@@ -443,4 +443,29 @@ public class MonsplodeCardModule : MonoBehaviour
         }
     }
 
+	IEnumerator TwitchHandleForcedSolve()
+	{
+		while (!isActivated) yield return true;
+		while (correctOffer != offerCount)
+		{
+			while (currentDeck < lowestCardInDeck)
+			{
+				next.OnInteract();
+				yield return new WaitForSeconds(0.1f);
+			}
+
+			while (currentDeck > lowestCardInDeck)
+			{
+				prev.OnInteract();
+				yield return new WaitForSeconds(0.1f);
+			}
+
+			if (deck[lowestCardInDeck].value <= offer.value)
+				trade.OnInteract();
+			else
+				keep.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
 }
