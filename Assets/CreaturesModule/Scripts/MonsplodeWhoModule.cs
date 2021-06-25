@@ -12,10 +12,13 @@ public class MonsplodeWhoModule : MonoBehaviour
     public KMSelectable[] buttons;
     public Transform[] DP, UP;
     public int timeGain, timeMax;
+    public KMModSettings modSet;
     int crID;
     public float moveDelta;
     bool leftTrue, isActivated = false, revive = false;
     private string textLeft, textRight;
+    bool alarmEnabled = false;
+    KMAudio.KMAudioRef audioRef = null;
 
     private static int _moduleIdCounter = 1;
     private int _moduleId;
@@ -23,6 +26,13 @@ public class MonsplodeWhoModule : MonoBehaviour
     void Start()
     {
         _moduleId = _moduleIdCounter++;
+        string[] setWords = modSet.Settings.Split(new char[] { ' ', '\n', '\t', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+        if (setWords != null && setWords.Length > 1) {
+            bool ae = false;
+            if (bool.TryParse(setWords[1], out ae)) {
+                alarmEnabled = ae;
+            }
+        }
     }
 
     void Awake()
@@ -41,6 +51,17 @@ public class MonsplodeWhoModule : MonoBehaviour
             return false;
         };
     }
+
+    void Update() {
+        if (!alarmEnabled) return;
+        if (isActivated && audioRef == null && NeedyModule.GetNeedyTimeRemaining() < 5f) {
+            audioRef = Audio.PlayGameSoundAtTransformWithRef(KMSoundOverride.SoundEffect.NeedyWarning, this.transform);
+        }
+        else if (audioRef != null && (!isActivated || NeedyModule.GetNeedyTimeRemaining() >= 5f)) {
+            audioRef.StopSound();
+            audioRef = null;
+		}
+	}
 
     protected bool Solve()
     {
@@ -92,6 +113,10 @@ public class MonsplodeWhoModule : MonoBehaviour
     {
         revive = true;
         StartCoroutine(GoDown());
+        if (audioRef != null) {
+            audioRef.StopSound();
+            audioRef = null;
+		}
     }
 
     void PickCreatures()

@@ -38,8 +38,10 @@ public class MonsplodeFightModule : MonoBehaviour
 		string[] setWords = modSet.Settings.Split();
 		if (setWords != null)
 		{
-			float ey = float.Parse(setWords[0]);
-			missingNoChance = Mathf.Clamp(ey,0f,1f);
+            float ey;
+            if (float.TryParse(setWords[0], out ey)) {
+			    missingNoChance = Mathf.Clamp(ey,0f,1f);
+			}
 		}
 		Init();
         Module.OnActivate += ActivateModule;

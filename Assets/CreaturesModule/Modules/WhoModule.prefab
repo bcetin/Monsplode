@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 11420980}
   - component: {fileID: 9598622}
   - component: {fileID: 11460960}
+  - component: {fileID: 114885782031015840}
   m_Layer: 0
   m_Name: WhoModule
   m_TagString: Untagged
@@ -1235,6 +1236,7 @@ MonoBehaviour:
   - {fileID: 425736}
   timeGain: 20
   timeMax: 80
+  modSet: {fileID: 114885782031015840}
   moveDelta: 0.001
 --- !u!114 &11429812
 MonoBehaviour:
@@ -1518,3 +1520,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
+--- !u!114 &114885782031015840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: 0.12 True agifuhasdfiugahsdf fgnx cgb fg
+  SettingsPath: 
