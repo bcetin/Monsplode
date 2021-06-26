@@ -7,6 +7,7 @@ public class MonsplodeWhoModule : MonoBehaviour
 {
     public KMAudio Audio;
     public KMNeedyModule NeedyModule;
+    public KMBombInfo BombInfo;
     public CreatureDataObject CD;
     public SpriteRenderer screenSR;
     public KMSelectable[] buttons;
@@ -33,6 +34,12 @@ public class MonsplodeWhoModule : MonoBehaviour
                 alarmEnabled = ae;
             }
         }
+        BombInfo.OnBombExploded += () => {
+            if (audioRef != null) {
+                audioRef.StopSound();
+                audioRef = null;
+            }
+        };
     }
 
     void Awake()
@@ -52,7 +59,8 @@ public class MonsplodeWhoModule : MonoBehaviour
         };
     }
 
-    void Update() {
+    void Update() 
+    {
         if (!alarmEnabled) return;
         if (isActivated && audioRef == null && NeedyModule.GetNeedyTimeRemaining() < 5f) {
             audioRef = Audio.PlayGameSoundAtTransformWithRef(KMSoundOverride.SoundEffect.NeedyWarning, this.transform);
