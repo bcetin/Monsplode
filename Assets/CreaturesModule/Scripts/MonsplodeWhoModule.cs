@@ -18,7 +18,7 @@ public class MonsplodeWhoModule : MonoBehaviour
     public float moveDelta;
     bool leftTrue, isActivated = false, revive = false;
     private string textLeft, textRight;
-    bool alarmEnabled = false;
+    bool alarmEnabled = true;
     KMAudio.KMAudioRef audioRef = null;
 
     private static int _moduleIdCounter = 1;
@@ -29,7 +29,7 @@ public class MonsplodeWhoModule : MonoBehaviour
         _moduleId = _moduleIdCounter++;
         string[] setWords = modSet.Settings.Split(new char[] { ' ', '\n', '\t', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         if (setWords != null && setWords.Length > 1) {
-            bool ae = false;
+            bool ae = alarmEnabled;
             if (bool.TryParse(setWords[1], out ae)) {
                 alarmEnabled = ae;
             }
