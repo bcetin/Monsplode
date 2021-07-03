@@ -402,7 +402,7 @@ public class MonsplodeFightModule : MonoBehaviour
         //MELBOR
         if (CD.specials[crea] == "ZERO68")
         {
-            if ((int)NETDAMAGE == 6 || (int)NETDAMAGE == 8)
+            if (NETDAMAGE == 6f || NETDAMAGE == 8f)
             {
                 Debug.LogFormat("[MonsplodeFight #{0}] Melbor takes 0 damage instead.", _moduleId);
                 return 0;
