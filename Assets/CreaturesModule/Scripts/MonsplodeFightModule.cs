@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
 using KMHelper;
+using Newtonsoft.Json;
 
 public class MonsplodeFightModule : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class MonsplodeFightModule : MonoBehaviour
     public Vector3[] AttackMul;
     public Transform[] DP, UP;
 	public Sprite missing;
-	public KMModSettings modSet;
+    MonsplodeSettings settings;
     float[][] mulLookup;
     bool isActivated = false;
 	public float missingNoChance = 1 / 92f;
@@ -35,15 +36,12 @@ public class MonsplodeFightModule : MonoBehaviour
     void Start()
     {
         _moduleId = _moduleIdCounter++;
-		string[] setWords = modSet.Settings.Split();
-		if (setWords != null)
-		{
-            float ey;
-            if (float.TryParse(setWords[0], out ey)) {
-			    missingNoChance = Mathf.Clamp(ey,0f,1f);
-			}
-		}
-		Init();
+
+        ModConfig<MonsplodeSettings> config = new ModConfig<MonsplodeSettings>("MonsplodeSettings");
+        settings = config.Read();
+        missingNoChance = Mathf.Clamp(settings.missingNoChance, 0f, 1f);
+		
+        Init();
         Module.OnActivate += ActivateModule;
         Info.OnBombExploded += BombExploded;
     }

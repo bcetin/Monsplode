@@ -531,7 +531,6 @@ GameObject:
   - component: {fileID: 11454590}
   - component: {fileID: 11481662}
   - component: {fileID: 11417628}
-  - component: {fileID: 114924041507368136}
   m_Layer: 0
   m_Name: CreatureModule
   m_TagString: Untagged
@@ -1846,7 +1845,6 @@ MonoBehaviour:
   - {fileID: 442426}
   - {fileID: 485358}
   missing: {fileID: 21300000, guid: 8d520e33f25e1504bbfd89df4f08fec0, type: 3}
-  modSet: {fileID: 114924041507368136}
   missingNoChance: 0.010869565
   moveDelta: 0.001
 --- !u!114 &11419374
@@ -2312,16 +2310,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
---- !u!114 &114924041507368136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: 0.5 test tetetete
-  SettingsPath: 

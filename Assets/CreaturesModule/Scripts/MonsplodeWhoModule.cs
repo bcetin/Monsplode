@@ -13,7 +13,7 @@ public class MonsplodeWhoModule : MonoBehaviour
     public KMSelectable[] buttons;
     public Transform[] DP, UP;
     public int timeGain, timeMax;
-    public KMModSettings modSet;
+    public MonsplodeSettings settings;
     int crID;
     public float moveDelta;
     bool leftTrue, isActivated = false, revive = false;
@@ -27,10 +27,11 @@ public class MonsplodeWhoModule : MonoBehaviour
     void Start()
     {
         _moduleId = _moduleIdCounter++;
-        string[] setWords = modSet.Settings.Split(new char[] { ' ', '\n', '\t', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        if (setWords != null && setWords.Length > 1) {
-            bool.TryParse(setWords[1], out alarmEnabled);
-        }
+
+        ModConfig<MonsplodeSettings> config = new ModConfig<MonsplodeSettings>("MonsplodeSettings");
+        settings = config.Read();
+        alarmEnabled = settings.needyAlertEnabled;
+
         BombInfo.OnBombExploded += () => {
             if (audioRef != null) {
                 audioRef.StopSound();
