@@ -1,4 +1,0 @@
-0.0109 
-True	
-Change the number between 0 and 1 to change special event occurance rate. (1 = 100%, 0 = 0%)
-Change the 'True' to 'False' to disable needy warning beeps for Who's That Monsplode when the timer is low (this was the original behavior until July 2021).
